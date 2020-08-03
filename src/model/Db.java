@@ -14,21 +14,18 @@ import java.sql.DriverManager;
 
 public class Db {
 
-	
-
     public static void main(String[] args) {
            EventQueue.invokeLater(new Runnable() {
                public void run() {
 
-                   String BDD = "projetjava?useUnicode=true\n" + 
-                           "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&\n" + 
-                           "serverTimezone=UTC";
-                   String url = "jdbc:mysql://localhost:8888/" + BDD;
+            	   String BDD = "projetjava?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+                   String url = "jdbc:mysql://localhost:8889/" + BDD;
                    String user = "root";
                    String passwd = "root";
 
                    try {
                        Class.forName("com.mysql.cj.jdbc.Driver");
+                       System.out.println("Driver ok");
                        Connection conn = DriverManager.getConnection(url, user, passwd);
                        System.out.println("Connecter");
                    } catch (Exception e){
@@ -39,6 +36,4 @@ public class Db {
                }
            });
        }
-
-    
 }
