@@ -26,6 +26,9 @@ public class Resume extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	private JTextField textField;
+	private JTextField htva;
+	private JTextField totalTVAfix;
+	private JTextField totalTVACFix;
 
 	/**
 	 * Launch the application.
@@ -47,6 +50,10 @@ public class Resume extends JFrame {
 	 * Create the frame.
 	 */
 	public Resume() {
+		
+		//pour les tests
+		Double total = 100.00;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 650);
 		contentPane = new JPanel();
@@ -172,35 +179,81 @@ public class Resume extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				Resume resume = new Resume();
+				try {
+					double TVA = Double.parseDouble(textField.getText());
+					textField.setText(TVA+"%");
+					htva.setText(total+"€");
+					Double TVAfix = total*TVA/100;
+					totalTVAfix.setText(TVAfix+"€");
+					Double TVACFix = TVAfix+total;
+					totalTVACFix.setText(TVACFix+"€");
+					//lblTotalTvac.setText(TVA+"%");
+					
+					
+					
+				}
+				catch(NumberFormatException err) {
+					textField.setText("Veuillez encoder un chiffre.");
+				}
 				
 				
 			}
 		});
 		
-		
 		JLabel lblTotal = new JLabel("Total HTVA:");
 		GridBagConstraints gbc_lblTotal = new GridBagConstraints();
-		gbc_lblTotal.anchor = GridBagConstraints.WEST;
+		gbc_lblTotal.anchor = GridBagConstraints.EAST;
 		gbc_lblTotal.insets = new Insets(0, 0, 5, 5);
 		gbc_lblTotal.gridx = 1;
 		gbc_lblTotal.gridy = 9;
 		contentPane.add(lblTotal, gbc_lblTotal);
 		
+		htva = new JTextField();
+		htva.setEditable(false);
+		GridBagConstraints gbc_htva = new GridBagConstraints();
+		gbc_htva.insets = new Insets(0, 0, 5, 5);
+		gbc_htva.fill = GridBagConstraints.HORIZONTAL;
+		gbc_htva.gridx = 2;
+		gbc_htva.gridy = 9;
+		contentPane.add(htva, gbc_htva);
+		htva.setColumns(10);
+		
 		JLabel lblTotalTva = new JLabel("Total TVA:");
 		GridBagConstraints gbc_lblTotalTva = new GridBagConstraints();
-		gbc_lblTotalTva.anchor = GridBagConstraints.WEST;
+		gbc_lblTotalTva.anchor = GridBagConstraints.EAST;
 		gbc_lblTotalTva.insets = new Insets(0, 0, 5, 5);
 		gbc_lblTotalTva.gridx = 1;
 		gbc_lblTotalTva.gridy = 10;
 		contentPane.add(lblTotalTva, gbc_lblTotalTva);
 		
+		totalTVAfix = new JTextField();
+		totalTVAfix.setEditable(false);
+		GridBagConstraints gbc_totalTVAfix = new GridBagConstraints();
+		gbc_totalTVAfix.insets = new Insets(0, 0, 5, 5);
+		gbc_totalTVAfix.fill = GridBagConstraints.HORIZONTAL;
+		gbc_totalTVAfix.gridx = 2;
+		gbc_totalTVAfix.gridy = 10;
+		contentPane.add(totalTVAfix, gbc_totalTVAfix);
+		totalTVAfix.setColumns(10);
+		
 		JLabel lblTotalTvac = new JLabel("Total TVAC:");
 		GridBagConstraints gbc_lblTotalTvac = new GridBagConstraints();
-		gbc_lblTotalTvac.anchor = GridBagConstraints.WEST;
+		gbc_lblTotalTvac.anchor = GridBagConstraints.EAST;
 		gbc_lblTotalTvac.insets = new Insets(0, 0, 5, 5);
 		gbc_lblTotalTvac.gridx = 1;
 		gbc_lblTotalTvac.gridy = 11;
 		contentPane.add(lblTotalTvac, gbc_lblTotalTvac);
+		
+		totalTVACFix = new JTextField();
+		totalTVACFix.setEditable(false);
+		GridBagConstraints gbc_totalTVACFix = new GridBagConstraints();
+		gbc_totalTVACFix.insets = new Insets(0, 0, 5, 5);
+		gbc_totalTVACFix.fill = GridBagConstraints.HORIZONTAL;
+		gbc_totalTVACFix.gridx = 2;
+		gbc_totalTVACFix.gridy = 11;
+		contentPane.add(totalTVACFix, gbc_totalTVACFix);
+		totalTVACFix.setColumns(10);
 		
 		JButton btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setForeground(Color.RED);
