@@ -18,7 +18,5 @@ public class Main {
 		// TODO Auto-generated method stub
 		Start view = new view.Start();
 		view.main(args);
-		
 	}
-
 }

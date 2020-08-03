@@ -59,7 +59,7 @@ public class Start extends JFrame {
 		JButton btnFacture = new JButton("Facture");
 		contentPane.add(btnFacture, BorderLayout.EAST);
 		
-		btnDevis.addActionListener(new ActionListener() {
+		btnFacture.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub

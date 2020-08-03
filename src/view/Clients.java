@@ -9,8 +9,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Color;
-
+import view.AjoutClient;
 public class Clients extends JFrame {
 
 	private JPanel contentPane;
@@ -77,6 +79,16 @@ public class Clients extends JFrame {
 		
 		JButton btnAddClient = new JButton("Ajouter un nouveau client");
 		contentPane.add(btnAddClient, BorderLayout.SOUTH);
+		
+		btnAddClient.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				AjoutClient ajoutClient = new view.AjoutClient();
+				ajoutClient.setVisible(true); 
+				setVisible(false);
+			}
+		});
 	}
 
 }
