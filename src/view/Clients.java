@@ -8,6 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import model.Utils;
+
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,6 +40,8 @@ public class Clients extends JFrame {
 	 * Create the frame.
 	 */
 	public Clients() {
+
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 350, 300);
 		contentPane = new JPanel();
@@ -87,6 +92,7 @@ public class Clients extends JFrame {
 				AjoutClient ajoutClient = new view.AjoutClient();
 				ajoutClient.setVisible(true); 
 				setVisible(false);
+				Utils.getStatus();
 			}
 		});
 	}

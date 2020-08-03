@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import view.Resume;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -13,6 +14,9 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -158,6 +162,16 @@ public class Creation extends JFrame {
 		gbc_btnFin.gridx = 3;
 		gbc_btnFin.gridy = 3;
 		contentPane.add(btnFin, gbc_btnFin);
+		
+		btnFin.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Resume resume = new view.Resume();
+				resume.setVisible(true); 
+				setVisible(false);
+			}
+		});
 		
 	}
 
