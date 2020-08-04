@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import view.Resume;
 import java.awt.EventQueue;
+import model.Utils;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -53,6 +54,16 @@ public class Creation extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+	public static boolean isNumeric(String str) { 
+		  try {  
+		    Double.parseDouble(str);  
+		    return true;
+		  } catch(NumberFormatException e){  
+		    return false;  
+		  }  
+		}
+	
 	public Creation() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 300);
@@ -146,6 +157,7 @@ public class Creation extends JFrame {
 		JTable table = new JTable(data, columnNames);
 		
 		
+		
 		btnAjouter.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -155,6 +167,18 @@ public class Creation extends JFrame {
 		                "Prix hors TVA"};
 				//data[1].add("6", "Création (€/h)",
 			     //"25");
+				if((Utils.isNumeric(textField.getText())==true)&&(Utils.isNumeric(textField_1.getText()))&&(!textField.getText().equals(""))&&(!textField_2.getText().equals(""))&&(!textField_1.getText().equals(""))) {
+					Creation creation = new Creation();
+					Creation.isNumeric(textField.getText());
+					
+					System.out.println("Champ ok");
+					textField.setText("");
+					textField_2.setText("");
+					textField_1.setText("");
+				}
+				else {
+					System.out.println("Champ manquant");
+				}
 			}
 		});
 		

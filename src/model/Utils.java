@@ -39,4 +39,13 @@ public class Utils {
 		System.out.println( utils.status );
 		return utils.status ;
 	}
+	
+	public static boolean isNumeric(String str) { 
+		  try {  
+		    Double.parseDouble(str);  
+		    return true;
+		  } catch(NumberFormatException e){  
+		    return false;  
+		  }  
+		}
 }
