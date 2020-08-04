@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 import view.AjoutClient;
-public class Clients extends JFrame {
+public class ClientsView extends JFrame {
 
 	private JPanel contentPane;
 
@@ -27,7 +27,7 @@ public class Clients extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Clients frame = new Clients();
+					ClientsView frame = new ClientsView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +39,7 @@ public class Clients extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Clients() {
+	public ClientsView() {
 
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

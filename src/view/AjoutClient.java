@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import controller.Clients;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -12,10 +13,11 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import view.Clients;
+import view.ClientsView;
 public class AjoutClient extends JFrame {
 
 	private JPanel contentPane;
@@ -159,8 +161,19 @@ public class AjoutClient extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Clients clients = new view.Clients();
-				clients.setVisible(true); 
+				System.out.println( inputNom.getText() );
+				
+				
+				Clients clients = new controller.Clients();
+				try {
+					clients.insertClient(clients.connect(),inputNom.getText(),inputAdresse.getText(),inputTva.getText(),inputMail.getText(),inputTel.getText());
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				ClientsView clientsView = new view.ClientsView();
+				clientsView.setVisible(true); 
 				setVisible(false);
 			}
 		});

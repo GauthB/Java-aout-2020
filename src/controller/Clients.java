@@ -48,12 +48,12 @@ public class Clients {
 
 	}
 
-	public void insertClient(Connection conn) throws SQLException {
+	public void insertClient(Connection conn, String nom, String adresse,String numTVA, String mail,String numTel ) throws SQLException {
 
 		Statement stmt = conn.createStatement();
 
 		stmt.executeUpdate("INSERT INTO clients (nom, adresse, tva, email, telephone) "
-		          +"VALUES ('Michel Simon', 'Rue du Champs 18, 1000 Chimay', '0485784895', 'm.s@gmail.com','04875154556')");
+		          +"VALUES ('"+nom+"', '"+adresse+"', '"+numTVA+"', '"+mail+"','"+numTel+"')");
 
 		conn.close();
 

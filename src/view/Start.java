@@ -15,7 +15,7 @@ import model.Utils;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import view.Clients;
+import view.ClientsView;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -83,8 +83,8 @@ public class Start extends JFrame {
 				// TODO Auto-generated method stub
 				
 				Utils.setStatus(true);
-				Clients clients = new view.Clients();
-				clients.setVisible(true); 
+				ClientsView clientsView = new view.ClientsView();
+				clientsView.setVisible(true); 
 				setVisible(false);
 			}
 		});
@@ -100,8 +100,8 @@ public class Start extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Clients clients = new view.Clients();
-				clients.setVisible(true); 
+				ClientsView clientsView = new view.ClientsView();
+				clientsView.setVisible(true); 
 				setVisible(false);
 				Utils.setStatus(false);
 			}
