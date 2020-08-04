@@ -146,6 +146,19 @@ public class Creation extends JFrame {
 		JTable table = new JTable(data, columnNames);
 		
 		
+		btnAjouter.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String[] ligne = {"Quantite",
+		                "Description",
+		                "Prix hors TVA"};
+				//data[1].add("6", "Création (€/h)",
+			     //"25");
+			}
+		});
+		
+		
 		
 		
 		//table = new JTable();
