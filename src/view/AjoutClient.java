@@ -74,7 +74,7 @@ public class AjoutClient extends JFrame {
 		gbc_lblNom.gridy = 2;
 		contentPane.add(lblNom, gbc_lblNom);
 		
-		inputNom = new JTextField();
+		inputNom = new JTextField("");
 		GridBagConstraints gbc_inputNom = new GridBagConstraints();
 		gbc_inputNom.insets = new Insets(0, 0, 5, 0);
 		gbc_inputNom.fill = GridBagConstraints.HORIZONTAL;
@@ -161,16 +161,23 @@ public class AjoutClient extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				System.out.println( inputNom.getText() );
 				
 				
-				Clients clients = new controller.Clients();
-				try {
-					clients.insertClient(clients.connect(),inputNom.getText(),inputAdresse.getText(),inputTva.getText(),inputMail.getText(),inputTel.getText());
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				
+				
+				if(!inputNom.getText().equals("")) {
+					Clients clients = new controller.Clients();
+					try {
+						clients.insertClient(clients.connect(),inputNom.getText(),inputAdresse.getText(),inputTva.getText(),inputMail.getText(),inputTel.getText());
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}	
 				}
+				else {
+					System.out.println("Champ vide");
+				}
+				
 				
 				ClientsView clientsView = new view.ClientsView();
 				clientsView.setVisible(true); 

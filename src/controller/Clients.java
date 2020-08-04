@@ -43,10 +43,21 @@ public class Clients {
 		ResultSet rs;
 	    rs = stmt.executeQuery("SELECT * FROM clients");
 
+		return rs;
+
+	}
+	
+	public ResultSet getClientsId(Connection conn,String ref) throws SQLException {
+
+		Statement stmt = conn.createStatement();
+		ResultSet rs;
+	    rs = stmt.executeQuery("SELECT id FROM clients WHERE id+' '+nom = '"+ref+"'");
 
 		return rs;
 
 	}
+	
+	
 
 	public void insertClient(Connection conn, String nom, String adresse,String numTVA, String mail,String numTel ) throws SQLException {
 

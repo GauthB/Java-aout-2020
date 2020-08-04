@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import controller.Clients;
 import java.awt.EventQueue;
 
 import javax.swing.JButton;
@@ -14,6 +15,8 @@ import model.Utils;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.Color;
 import view.AjoutClient;
 public class ClientsView extends JFrame {
@@ -53,32 +56,48 @@ public class ClientsView extends JFrame {
 		
 		JLabel lblVeuillezSelectionnerCe = new JLabel("Veuillez selectionner votre client:");
 		contentPane.add(lblVeuillezSelectionnerCe, BorderLayout.NORTH);
-		
+		Clients clients = new Clients();
 		List list = new List();
-		list.add("a");
-	      list.add("b");
-	      list.add("c");
-	      list.add("d");
-	      list.add("e");
-	      list.add("f");
-	      list.add("a");
-	      list.add("b");
-	      list.add("c");
-	      list.add("d");
-	      list.add("e");
-	      list.add("f");
-	      list.add("a");
-	      list.add("b");
-	      list.add("c");
-	      list.add("d");
-	      list.add("e");
-	      list.add("f");
-	      list.add("a");
-	      list.add("b");
-	      list.add("c");
-	      list.add("d");
-	      list.add("e");
-	      list.add("f");
+		// remplissage du tableau
+		try {
+			ResultSet clientTb= clients.getClients(clients.connect()) ;
+			while ( clientTb.next() ) {
+                String firstName = clientTb.getString("id")+" "+clientTb.getString("nom");
+                //System.out.println(firstName);
+                list.add(firstName);
+            }
+			
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			System.out.println("erreur dans le getClients");
+			e1.printStackTrace();
+		}
+		
+		//selectionner le client
+		list.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				//System.out.println(e.getActionCommand());
+				
+				try {
+					ResultSet clientId= clients.getClientsId(clients.connect(),e.getActionCommand()) ;
+					while ( clientId.next() ) {
+		                String firstName = clientId.getString("id");
+		                System.out.println(firstName);
+		                
+		            }
+					
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					System.out.println("erreur dans le getClients");
+					e1.printStackTrace();
+				}
+				
+				
+			}
+		});
+		
 		list.setBackground(Color.GRAY);
 		contentPane.add(list, BorderLayout.WEST);
 		
