@@ -3,7 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import controller.Clients;
 import java.awt.EventQueue;
-
+import view.Creation;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -86,6 +86,9 @@ public class ClientsView extends JFrame {
 		                String firstName = clientId.getString("id");
 		                System.out.println(firstName);
 		                
+		                Creation creation = new view.Creation();
+		                creation.setVisible(true); 
+						setVisible(false);
 		            }
 					
 				} catch (SQLException e1) {
