@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import controller.GeneratePdf;
 import controller.Clients;
 import view.Start;
 import java.awt.EventQueue;
@@ -322,6 +323,9 @@ public class Resume extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				setVisible(false);
+				
+				GeneratePdf generatePdf = new controller.GeneratePdf();
+				generatePdf.main(columnNames);
 			}
 		});
 	}
