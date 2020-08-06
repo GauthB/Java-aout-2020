@@ -44,7 +44,6 @@ public class ClientsView extends JFrame {
 	 * Create the frame.
 	 */
 	public ClientsView() {
-
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 350, 300);

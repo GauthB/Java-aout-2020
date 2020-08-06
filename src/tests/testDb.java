@@ -12,6 +12,8 @@ import controller.Clients;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.sql.SQLException;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -22,8 +24,7 @@ public class testDb {
 	
 
 /**
- *  TestGetVaisseau
- *  Verifier si ce que l'on reçoit du getVaisseau est bien egale a la valeur de la variable vaisseau
+ *  Tester la connexion à la base de données
  */
 	@Test
 	void testConnection() {
@@ -36,4 +37,22 @@ public class testDb {
 				fail("Erreur de connection avec la db");
 		}  
 	}
+	
+	/**
+	 *  Tester une requete 
+	 *  Vérifier si la base de données n'est pas vide.
+	 * @throws SQLException 
+	 */
+		@Test
+		void testRequete() throws SQLException {
+				Clients clients = new Clients();
+				if (clients.getClients(clients.connect())!=null) {
+					System.out.print("La base de données n'est pas vide");
+				}
+				else {
+					System.out.print("La base de données est vide");
+					fail("La base de données est vide");
+				}  
+		}
 }
+
