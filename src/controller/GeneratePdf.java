@@ -51,21 +51,55 @@ public class GeneratePdf {
 	            
 	            
 	            
-	            row2.createCell(5).setCellValue(clientNom);
-	            row3.createCell(5).setCellValue(clientAdresse);
-	            row4.createCell(5).setCellValue(clientTel);
-	            row5.createCell(5).setCellValue(clientTVA);
-	            row6.createCell(5).setCellValue(clientMail);
+	            row2.createCell(3).setCellValue(clientNom);
+	            row3.createCell(3).setCellValue(clientAdresse);
+	            row4.createCell(3).setCellValue(clientTel);
+	            row5.createCell(3).setCellValue(clientTVA);
+	            row6.createCell(3).setCellValue(clientMail);
 
 	           
-	            
-	            
-	            
-	            //HSSFRow row = sheet.createRow((short)1);
-	            //row.createCell(0).setCellValue("1");
-	            //row.createCell(1).setCellValue("Sankumarsingh");
-	            //row.createCell(2).setCellValue("India");
-	            //row.createCell(3).setCellValue("sankumarsingh@gmail.com");
+	         
+	    		String data [][]= {
+	    			    {"1", "Hebergement",
+	    			     "100"},
+	    			    {"1", "Nom de domaine",
+	    			     "15"}
+	    			};
+	    		int s=15;
+	    		Double totalhtva = 0.0;
+	    		HSSFRow rowTitle = sheet.createRow((short)s-1);
+    			rowTitle.createCell(1).setCellValue("Quantité");
+    			rowTitle.createCell(2).setCellValue("Description");
+    			rowTitle.createCell(3).setCellValue("Prix unitaire");
+	    		for ( int i = 0; i<data.length;i++ ) {
+	    			
+	    			
+	    			
+	    			HSSFRow rowAll = sheet.createRow((short)s);
+	    			rowAll.createCell(1).setCellValue(data[i][0]);
+	    			rowAll.createCell(2).setCellValue(data[i][1]);
+	    			rowAll.createCell(3).setCellValue(data[i][2]+"€");
+	    			totalhtva+=Double.valueOf(data[i][2]);
+	    			s++;
+	    		}
+	    		
+	    		HSSFRow rowHTVA = sheet.createRow((short)s+3);
+	    				rowHTVA.createCell(2).setCellValue("Total HTVA:");
+	    				rowHTVA.createCell(3).setCellValue(totalhtva+" €");
+	    		
+	    		HSSFRow rowTotalTva = sheet.createRow((short)s+4);
+	    			rowTotalTva.createCell(2).setCellValue("Total TVA:");
+	    			rowTotalTva.createCell(3).setCellValue(totalhtva*21/100+" €");
+	    			
+	    		HSSFRow rowTotalTVAC = sheet.createRow((short)s+5);
+	    			rowTotalTVAC.createCell(2).setCellValue("Total TVAC:");
+	    			rowTotalTVAC.createCell(3).setCellValue(totalhtva+(totalhtva*21/100)+" €");	
+	    		
+	    		HSSFRow rowLast1 = sheet.createRow((short)s+9);
+	    		rowLast1.createCell(2).setCellValue("BE23 0636 6641 5091");
+	    		HSSFRow rowLast2 = sheet.createRow((short)s+10);
+	    		rowLast2.createCell(2).setCellValue("www.wecodx.com");
+	    			
 
 	            
 	            
