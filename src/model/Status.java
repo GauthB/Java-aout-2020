@@ -9,7 +9,7 @@ package model;
  */
 public class Status {
 
-	 String  status ;
+	 private static String status ;
 
 	/**
 	 * @return the status

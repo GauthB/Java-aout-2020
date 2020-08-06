@@ -4,6 +4,7 @@
 package controller;
 
 import  java.io.*;
+import  model.Status;
 
 import javax.swing.JOptionPane;
 
@@ -20,8 +21,10 @@ import javax.swing.JOptionPane;
 public class GeneratePdf {
 	
 	   public static void main(String[]args) {
+		   Status status = new Status();
 		   
-		   String statut ="Facture";
+		   String statut =status.getStatus();
+		   
 		   String clientNom = "Cardiomedic";
 		   String clientAdresse = "1360 Perwez";
 		   String clientTel = "0476958364";
