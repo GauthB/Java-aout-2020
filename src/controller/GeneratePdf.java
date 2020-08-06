@@ -65,6 +65,7 @@ public class GeneratePdf {
 	    			    {"1", "Nom de domaine",
 	    			     "15"}
 	    			};
+	    		
 	    		int s=15;
 	    		Double totalhtva = 0.0;
 	    		HSSFRow rowTitle = sheet.createRow((short)s-1);

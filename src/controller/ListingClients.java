@@ -23,7 +23,6 @@ import controller.Clients;
 public class ListingClients {
 
 	
-	
 	   public static void main(String[]args) {
 	
 		Clients clients = new Clients();

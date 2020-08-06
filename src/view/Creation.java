@@ -3,12 +3,13 @@ package view;
 import java.awt.BorderLayout;
 import view.Resume;
 import java.awt.EventQueue;
-import model.Utils;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+
+import controller.Utils;
 
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;

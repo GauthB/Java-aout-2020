@@ -1,7 +1,7 @@
 /**
  * 
  */
-package model;
+package controller;
 
 import java.time.LocalDate;
 import java.time.ZoneId;

@@ -1,7 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
-import model.Utils;
+
 import model.Status;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import model.Utils;
+import controller.Utils;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;

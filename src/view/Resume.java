@@ -2,6 +2,7 @@ package view;
 
 import java.awt.BorderLayout;
 import controller.GeneratePdf;
+import controller.Utils;
 import controller.Clients;
 import view.Start;
 import java.awt.EventQueue;
@@ -25,7 +26,7 @@ import javax.swing.JButton;
 import java.awt.Color;
 
 import model.Status;
-import model.Utils;
+
 import javax.swing.JTextField;
 public class Resume extends JFrame {
 
