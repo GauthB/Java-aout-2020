@@ -23,6 +23,8 @@ import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.Color;
+
+import model.Status;
 import model.Utils;
 import javax.swing.JTextField;
 public class Resume extends JFrame {
@@ -71,7 +73,9 @@ public class Resume extends JFrame {
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
-		JLabel lblFacture = new JLabel("Facture");
+
+		Status status = new Status();
+		JLabel lblFacture = new JLabel(status.getStatus());
 		lblFacture.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		GridBagConstraints gbc_lblFacture = new GridBagConstraints();
 		gbc_lblFacture.gridwidth = 2;

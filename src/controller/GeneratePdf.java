@@ -58,9 +58,7 @@ public class GeneratePdf {
 	            row6.createCell(5).setCellValue(clientMail);
 
 	           
-	            JFrame parent = new JFrame();
-
-	            JOptionPane.showMessageDialog(parent, "La facture s'est générée avec succès!");
+	            
 	            
 	            
 	            //HSSFRow row = sheet.createRow((short)1);
@@ -76,6 +74,9 @@ public class GeneratePdf {
 	            fileOut.close();
 	            workbook.close();
 	            System.out.println("Your excel file has been generated!");
+	            JFrame parent = new JFrame();
+
+	            JOptionPane.showMessageDialog(parent, "La facture s'est générée avec succès!");
 
 	        } catch ( Exception ex ) {
 	            System.out.println(ex);

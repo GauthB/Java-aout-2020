@@ -2,6 +2,7 @@ package view;
 
 import java.awt.BorderLayout;
 import model.Utils;
+import model.Status;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,16 +46,17 @@ public class Start extends JFrame {
 	 */
 	public Start() {
 		Utils utils = new Utils();
+		Status status = new Status();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 350, 150);
+		setBounds(100, 100, 350, 200);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{173, 171, 0};
-		gbl_contentPane.rowHeights = new int[]{16, 102, 0};
+		gbl_contentPane.rowHeights = new int[]{16, 102, 0, 0};
 		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
 		JLabel lblVeuillezSelectionnerCe = new JLabel("Veuillez selectionner ce que vous voulez générer:");
@@ -72,7 +74,7 @@ public class Start extends JFrame {
 		JButton btnDevis = new JButton("Devis");
 		GridBagConstraints gbc_btnDevis = new GridBagConstraints();
 		gbc_btnDevis.fill = GridBagConstraints.VERTICAL;
-		gbc_btnDevis.insets = new Insets(0, 0, 0, 5);
+		gbc_btnDevis.insets = new Insets(0, 0, 5, 5);
 		gbc_btnDevis.gridx = 0;
 		gbc_btnDevis.gridy = 1;
 		contentPane.add(btnDevis, gbc_btnDevis);
@@ -82,7 +84,7 @@ public class Start extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
-				Utils.setStatus(true);
+				status.setStatus("Devis");
 				ClientsView clientsView = new view.ClientsView();
 				clientsView.setVisible(true); 
 				setVisible(false);
@@ -91,19 +93,29 @@ public class Start extends JFrame {
 		
 		JButton btnFacture = new JButton("Facture");
 		GridBagConstraints gbc_btnFacture = new GridBagConstraints();
+		gbc_btnFacture.insets = new Insets(0, 0, 5, 0);
 		gbc_btnFacture.fill = GridBagConstraints.VERTICAL;
 		gbc_btnFacture.gridx = 1;
 		gbc_btnFacture.gridy = 1;
 		contentPane.add(btnFacture, gbc_btnFacture);
 		
+		JButton btnExcelClient = new JButton("Générer listing clients");
+		GridBagConstraints gbc_btnExcelClient = new GridBagConstraints();
+		gbc_btnExcelClient.gridwidth = 2;
+		gbc_btnExcelClient.insets = new Insets(0, 0, 0, 5);
+		gbc_btnExcelClient.gridx = 0;
+		gbc_btnExcelClient.gridy = 2;
+		contentPane.add(btnExcelClient, gbc_btnExcelClient);
+		
 		btnFacture.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				
 				ClientsView clientsView = new view.ClientsView();
 				clientsView.setVisible(true); 
 				setVisible(false);
-				Utils.setStatus(false);
+				status.setStatus("Facture");
 			}
 		});
 	}

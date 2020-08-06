@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -176,6 +178,9 @@ public class AjoutClient extends JFrame {
 				}
 				else {
 					System.out.println("Champ vide");
+					JFrame parent = new JFrame();
+
+		            JOptionPane.showMessageDialog(parent, "Rien ne s'est ajouté dans la base de données car il n'y avait pas de nom enregistré.");
 				}
 				
 				

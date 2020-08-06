@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
+import model.Status;
 import model.Utils;
 
 import java.awt.List;
@@ -57,6 +57,9 @@ public class ClientsView extends JFrame {
 		JLabel lblVeuillezSelectionnerCe = new JLabel("Veuillez selectionner votre client:");
 		contentPane.add(lblVeuillezSelectionnerCe, BorderLayout.NORTH);
 		Clients clients = new Clients();
+		Status status = new Status();
+		status.getStatus();
+		System.out.println(status.getStatus());
 		List list = new List();
 		// remplissage du tableau
 		try {
@@ -110,11 +113,11 @@ public class ClientsView extends JFrame {
 		btnAddClient.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				System.out.println(status.getStatus());
 				// TODO Auto-generated method stub
 				AjoutClient ajoutClient = new view.AjoutClient();
 				ajoutClient.setVisible(true); 
 				setVisible(false);
-				Utils.getStatus();
 			}
 		});
 	}
