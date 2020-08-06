@@ -1,9 +1,9 @@
 package view;
 
 import java.awt.BorderLayout;
+import model.Document;
 import view.Resume;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -36,21 +36,7 @@ public class Creation extends JFrame {
 	private JLabel lblDescription;
 	private JLabel lblPrixHtva;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Creation frame = new Creation();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
@@ -65,7 +51,7 @@ public class Creation extends JFrame {
 		  }  
 		}
 	
-	public Creation() {
+	public Creation(Document document) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 300);
 		contentPane = new JPanel();
@@ -169,13 +155,24 @@ public class Creation extends JFrame {
 				//data[1].add("6", "Création (€/h)",
 			     //"25");
 				if((Utils.isNumeric(textField.getText())==true)&&(Utils.isNumeric(textField_1.getText()))&&(!textField.getText().equals(""))&&(!textField_2.getText().equals(""))&&(!textField_1.getText().equals(""))) {
-					Creation creation = new Creation();
-					Creation.isNumeric(textField.getText());
+			
+				
+					int quant = Integer.parseInt(textField.getText());
+					String descript = textField_2.getText();
+					Double prix = Double.valueOf(textField_1.getText());
+					
+					document.addDescription(quant,descript,prix);
+					System.out.println(document.getDescriptionList().get(0).getQuantite());
+					
+					
+					
+					
 					
 					System.out.println("Champ ok");
 					textField.setText("");
 					textField_2.setText("");
 					textField_1.setText("");
+					
 				}
 				else {
 					System.out.println("Champ manquant");

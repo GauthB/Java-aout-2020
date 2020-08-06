@@ -1,5 +1,5 @@
 package view;
-
+import model.Document;
 import java.awt.BorderLayout;
 import controller.Clients;
 import java.awt.EventQueue;
@@ -29,26 +29,13 @@ public class AjoutClient extends JFrame {
 	private JTextField inputAdresse;
 	private JTextField inputNom;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AjoutClient frame = new AjoutClient();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
+	
 	/**
 	 * Create the frame.
 	 */
-	public AjoutClient() {
+	public AjoutClient(Document document) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -183,9 +170,9 @@ public class AjoutClient extends JFrame {
 		            JOptionPane.showMessageDialog(parent, "Rien ne s'est ajouté dans la base de données car il n'y avait pas de nom enregistré.");
 				}
 				
-				
-				ClientsView clientsView = new view.ClientsView();
+				ClientsView clientsView = new view.ClientsView(document);
 				clientsView.setVisible(true); 
+				
 				setVisible(false);
 			}
 		});

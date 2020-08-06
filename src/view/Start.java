@@ -1,8 +1,8 @@
 package view;
 
 import java.awt.BorderLayout;
+import model.Document;
 
-import model.Status;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,7 +46,6 @@ public class Start extends JFrame {
 	 */
 	public Start() {
 		Utils utils = new Utils();
-		Status status = new Status();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 350, 200);
 		contentPane = new JPanel();
@@ -79,17 +78,21 @@ public class Start extends JFrame {
 		gbc_btnDevis.gridy = 1;
 		contentPane.add(btnDevis, gbc_btnDevis);
 		//btnDevis.addActionListener(this);
+		
 		btnDevis.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
-				status.setStatus("Devis");
-				ClientsView clientsView = new view.ClientsView();
+				
+				Document document = new Document("Devis");
+				
+				ClientsView clientsView = new view.ClientsView(document);
 				clientsView.setVisible(true); 
 				setVisible(false);
 			}
 		});
+		
 		
 		JButton btnFacture = new JButton("Facture");
 		GridBagConstraints gbc_btnFacture = new GridBagConstraints();
@@ -111,11 +114,11 @@ public class Start extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
-				ClientsView clientsView = new view.ClientsView();
+
+				Document document = new Document("Facture");
+				ClientsView clientsView = new view.ClientsView(document);
 				clientsView.setVisible(true); 
 				setVisible(false);
-				status.setStatus("Facture");
 			}
 		});
 	}

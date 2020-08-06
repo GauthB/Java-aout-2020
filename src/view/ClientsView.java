@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import model.Document;
 import controller.Clients;
 import controller.Utils;
 
@@ -11,7 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import model.Status;
 
 import java.awt.List;
 import java.awt.event.ActionEvent;
@@ -24,27 +24,14 @@ public class ClientsView extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ClientsView frame = new ClientsView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public ClientsView() {
+	public ClientsView(Document document) {
 
+		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 350, 300);
@@ -52,15 +39,12 @@ public class ClientsView extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+	
 		
 		
 		JLabel lblVeuillezSelectionnerCe = new JLabel("Veuillez selectionner votre client:");
 		contentPane.add(lblVeuillezSelectionnerCe, BorderLayout.NORTH);
 		Clients clients = new Clients();
-		Status status = new Status();
-		status.getStatus();
-		System.out.println(status.getStatus());
 		List list = new List();
 		// remplissage du tableau
 		try {
@@ -87,10 +71,10 @@ public class ClientsView extends JFrame {
 				try {
 					ResultSet clientId= clients.getClientsId(clients.connect(),e.getActionCommand()) ;
 					while ( clientId.next() ) {
-		                String firstName = clientId.getString("id");
-		                System.out.println(firstName);
+		                int id = Integer.parseInt(clientId.getString("id"));
+		                document.setInfoClient(id);
 		                
-		                Creation creation = new view.Creation();
+		                Creation creation = new view.Creation(document);
 		                creation.setVisible(true); 
 						setVisible(false);
 		            }
@@ -114,11 +98,9 @@ public class ClientsView extends JFrame {
 		btnAddClient.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(status.getStatus());
 				// TODO Auto-generated method stub
-				AjoutClient ajoutClient = new view.AjoutClient();
+				AjoutClient ajoutClient = new view.AjoutClient(document);
 				ajoutClient.setVisible(true); 
-				setVisible(false);
 			}
 		});
 	}

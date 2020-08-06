@@ -25,7 +25,6 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.Color;
 
-import model.Status;
 
 import javax.swing.JTextField;
 public class Resume extends JFrame {
@@ -53,6 +52,7 @@ public class Resume extends JFrame {
 		});
 	}
 
+	
 	/**
 	 * Create the frame.
 	 */
@@ -61,6 +61,7 @@ public class Resume extends JFrame {
 		//pour les tests
 		Double total = 115.00;
 		int id = 2;
+		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 650);
@@ -75,8 +76,7 @@ public class Resume extends JFrame {
 		contentPane.setLayout(gbl_contentPane);
 		
 
-		Status status = new Status();
-		JLabel lblFacture = new JLabel(status.getStatus());
+		JLabel lblFacture = new JLabel("en test");
 		lblFacture.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		GridBagConstraints gbc_lblFacture = new GridBagConstraints();
 		gbc_lblFacture.gridwidth = 2;
