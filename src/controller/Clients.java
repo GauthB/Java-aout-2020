@@ -27,7 +27,6 @@ public class Clients {
 		    Connection conn = DriverManager.getConnection(url, user, passwd);
 		    return conn;
 
-
 		}
 		catch (Exception e){
 
