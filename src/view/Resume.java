@@ -54,7 +54,6 @@ public class Resume extends JFrame {
 		
 		
 		for(int i = 0; i<document.getDescriptionList().size();i++) {
-			System.out.println(document.getDescriptionList().get(i).getPrix());
 			Double quant = (double) document.getDescriptionList().get(i).getQuantite();
 			Double finalT = quant * document.getDescriptionList().get(i).getPrix();
 			total+=finalT;
@@ -113,7 +112,6 @@ public class Resume extends JFrame {
                 numTVA = clientId.getString("tva");
                 mail = clientId.getString("email");
                 numTel = clientId.getString("telephone");
-                System.out.println(firstName);
             }
 			
 		} catch (SQLException e1) {

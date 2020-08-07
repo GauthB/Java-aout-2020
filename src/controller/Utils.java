@@ -12,7 +12,10 @@ import java.time.ZoneId;
  */
 public class Utils {
 
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public static LocalDate GetDate() {
 		//Get Date Today
 		ZoneId zonedId = ZoneId.of( "Europe/Paris" );
@@ -22,7 +25,11 @@ public class Utils {
 	};
 	
 	
-	
+	/**
+	 * 
+	 * @param str
+	 * @return
+	 */
 	public static boolean isNumeric(String str) { 
 		  try {  
 		    Double.parseDouble(str);  

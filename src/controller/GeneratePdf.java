@@ -29,6 +29,10 @@ public class GeneratePdf {
 
 	private Double totalhtva = 0.0;
 	
+	/**
+	 * 
+	 * @param document
+	 */
 	   public GeneratePdf(Document document) {
 		   
 		   String statut =document.getStatus();

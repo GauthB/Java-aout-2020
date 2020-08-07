@@ -22,8 +22,11 @@ import controller.Clients;
  */
 public class ListingClients {
 
-	
-	   public static void main(String[]args) {
+	/**
+	 * 
+	 * @param args
+	 */
+	   public ListingClients() {
 	
 		Clients clients = new Clients();
 		

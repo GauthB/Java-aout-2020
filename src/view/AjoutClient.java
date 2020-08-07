@@ -33,7 +33,8 @@ public class AjoutClient extends JFrame {
 
 	
 	/**
-	 * Create the frame.
+	 * The view to add a new customer to the database
+	 * @param document
 	 */
 	public AjoutClient(Document document) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -146,12 +147,14 @@ public class AjoutClient extends JFrame {
 		gbc_btnEnregistrer.gridy = 8;
 		contentPane.add(btnEnregistrer, gbc_btnEnregistrer);
 		
+		
+		/**
+		 * Event when registering a new customer
+		 */
 		btnEnregistrer.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
-				
 				
 				
 				if(!inputNom.getText().equals("")) {

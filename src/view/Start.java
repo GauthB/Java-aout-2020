@@ -1,37 +1,34 @@
 package view;
 
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.awt.BorderLayout;
 import model.Document;
-
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import controller.Clients;
 import controller.Utils;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import view.ClientsView;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Font;
+import controller.ListingClients;
+
 public class Start extends JFrame {
 
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
+	 * Start application
+	 * @param args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -47,13 +44,10 @@ public class Start extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Start
 	 */
 	public Start() {
 		
-		 
-		
-		Utils utils = new Utils();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 350, 200);
 		contentPane = new JPanel();
@@ -86,15 +80,17 @@ public class Start extends JFrame {
 		gbc_btnDevis.gridy = 1;
 		contentPane.add(btnDevis, gbc_btnDevis);
 		Clients clients = new Clients();
-		//btnDevis.addActionListener(this);
-		
+		/**
+		 * if you choose "quote"
+		 * document.status = "Devis"
+		 */
 		btnDevis.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 
 				if (clients.connect()!=null) {
-					System.out.print("La connection a été éffectuée \n");
+					System.out.print("Vérification de la connection à la db: OK\n");
 				}
 				else {
 					System.out.print("Erreur de connection avec la db \n");
@@ -129,13 +125,32 @@ public class Start extends JFrame {
 		gbc_btnExcelClient.gridy = 2;
 		contentPane.add(btnExcelClient, gbc_btnExcelClient);
 		
+		
+		/**
+		 * generate customer listing 
+		 */
+		btnExcelClient.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				ListingClients listingClients = new ListingClients();
+				
+			}
+		});
+		
+		
+		
+		/**
+		 * if you choose "invoice"
+		 * document.status = "Facture"
+		 */
 		btnFacture.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 
 				if (clients.connect()!=null) {
-					System.out.print("La connection a été éffectuée \n");
+					System.out.print("Vérification de la connection à la db: OK \n");
 				}
 				else {
 					System.out.print("Erreur de connection avec la db \n");
@@ -152,14 +167,5 @@ public class Start extends JFrame {
 			}
 		});
 		
-		if (clients.connect()!=null) {
-			System.out.print("La connection a été éffectuée \n");
-		}
-		else {
-			System.out.print("Erreur de connection avec la db \n");
-			JFrame parent = new JFrame();
-
-            JOptionPane.showMessageDialog(parent, "ERREUR: Vous n'êtes pas connecté à la base de données.");
-		} 
 	}
 }

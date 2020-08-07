@@ -26,11 +26,11 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 public class Creation extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -39,26 +39,12 @@ public class Creation extends JFrame {
 	private JLabel lblQuantit;
 	private JLabel lblDescription;
 	private JLabel lblPrixHtva;
-	private JList list;
-	private JList list_2;
-	private JList list_3;
 
 
-
-	
 	/**
-	 * Create the frame.
+	 * The view to create an invoice or quote
+	 * @param document
 	 */
-	
-	public static boolean isNumeric(String str) { 
-		  try {  
-		    Double.parseDouble(str);  
-		    return true;
-		  } catch(NumberFormatException e){  
-		    return false;  
-		  }  
-		}
-	
 	public Creation(Document document) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 400);
@@ -164,13 +150,15 @@ public class Creation extends JFrame {
 		gbc_list_3.gridy = 3;
 		contentPane.add(list_3, gbc_list_3);
 		
+		/**
+		 * The button add to the visual list and in the document variable
+		 */
 		btnAjouter.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
-				//data[1].add("6", "Création (€/h)",
-			     //"25");
+				//Check if all values are valid
 				if((Utils.isNumeric(textField.getText())==true)&&(Utils.isNumeric(textField_1.getText()))&&(!textField.getText().equals(""))&&(!textField_2.getText().equals(""))&&(!textField_1.getText().equals(""))) {
 			
 				
@@ -179,11 +167,7 @@ public class Creation extends JFrame {
 					Double prix = Double.valueOf(textField_1.getText());
 					
 					document.addDescription(quant,descript,prix);
-					System.out.println(document.getDescriptionList().get(0).getQuantite());
 					
-					
-					//table.repaint();
-					//((AbstractTableModel) table).fireTableDataChanged();
 					list_1.add(textField.getText());
 					list_2.add(descript);
 					list_3.add(textField_1.getText());
@@ -195,6 +179,9 @@ public class Creation extends JFrame {
 				}
 				else {
 					System.out.println("Champ manquant");
+					JFrame parent = new JFrame();
+
+		            JOptionPane.showMessageDialog(parent, "Erreur: Un champ est mal introduit. [Chiffre - Texte - Chiffre] ");
 				}
 			}
 		});
@@ -202,17 +189,15 @@ public class Creation extends JFrame {
 
 		
 		
-		
-
-
-		
 		btnFin = new JButton("Fin");
 		GridBagConstraints gbc_btnFin = new GridBagConstraints();
 		gbc_btnFin.gridx = 3;
 		gbc_btnFin.gridy = 3;
 		contentPane.add(btnFin, gbc_btnFin);
 		
-		
+		/**
+		 * to view the summary before generating it
+		 */
 		btnFin.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

@@ -20,7 +20,11 @@ public class ClientInfo {
 	private  String adresse;
 	private  String tel;
 	
-	
+	/**
+	 * 
+	 * @param id
+	 * @throws SQLException
+	 */
 	public ClientInfo(int id) throws SQLException {
 		this.id=id;
 		

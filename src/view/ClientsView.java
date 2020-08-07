@@ -27,14 +27,12 @@ public class ClientsView extends JFrame {
 	
 
 	/**
-	 * Create the frame.
+	 * The view to select your client
+	 * @param document
 	 */
-
 	public ClientsView(Document document) {
 
 
-		
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 350, 300);
 		contentPane = new JPanel();
@@ -48,13 +46,14 @@ public class ClientsView extends JFrame {
 		contentPane.add(lblVeuillezSelectionnerCe, BorderLayout.NORTH);
 		Clients clients = new Clients();
 		List list = new List();
-		// remplissage du tableau
-	
+		
+		/**
+		 * fill in the client list
+		 */
 		try {
 			ResultSet clientTb= clients.getClients(clients.connect()) ;
 			while ( clientTb.next() ) {
                 String firstName = clientTb.getString("id")+" "+clientTb.getString("nom");
-                //System.out.println(firstName);
                 list.add(firstName);
             }
 			
@@ -64,12 +63,13 @@ public class ClientsView extends JFrame {
 			e1.printStackTrace();
 		}
 		
-		//selectionner le client
+		/**
+		 * when we click in the list
+		 */
 		list.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//System.out.println(e.getActionCommand());
 				
 				try {
 					ResultSet clientId= clients.getClientsId(clients.connect(),e.getActionCommand()) ;
@@ -88,7 +88,6 @@ public class ClientsView extends JFrame {
 					e1.printStackTrace();
 				}
 				
-				
 			}
 		});
 		
@@ -98,6 +97,9 @@ public class ClientsView extends JFrame {
 		JButton btnAddClient = new JButton("Ajouter un nouveau client");
 		contentPane.add(btnAddClient, BorderLayout.SOUTH);
 		
+		/**
+		 * Add a customer to the database
+		 */
 		btnAddClient.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -107,5 +109,4 @@ public class ClientsView extends JFrame {
 			}
 		});
 	}
-
 }
