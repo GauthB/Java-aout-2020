@@ -149,7 +149,6 @@ public class Start extends JFrame {
 				clientsView.setVisible(true); 
 				setVisible(false);
 				
-
 			}
 		});
 		
@@ -163,5 +162,4 @@ public class Start extends JFrame {
             JOptionPane.showMessageDialog(parent, "ERREUR: Vous n'êtes pas connecté à la base de données.");
 		} 
 	}
-
 }

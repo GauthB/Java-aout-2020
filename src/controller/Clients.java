@@ -14,6 +14,10 @@ import java.sql.ResultSet;
 
 public class Clients {
 
+	/**
+	 * 
+	 * @return
+	 */
 	public Connection connect() {
 
 		String BDD = "projetjava?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
@@ -36,7 +40,12 @@ public class Clients {
 
 	}
 
-
+	/**
+	 * 
+	 * @param conn
+	 * @return
+	 * @throws SQLException
+	 */
 	public ResultSet getClients(Connection conn) throws SQLException {
 
 		Statement stmt = conn.createStatement();
@@ -47,6 +56,13 @@ public class Clients {
 
 	}
 	
+	/**
+	 * 
+	 * @param conn
+	 * @param ref
+	 * @return
+	 * @throws SQLException
+	 */
 	public ResultSet getClientsId(Connection conn,String ref) throws SQLException {
 
 		Statement stmt = conn.createStatement();
@@ -57,6 +73,13 @@ public class Clients {
 
 	}
 	
+	/**
+	 * 
+	 * @param conn
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
 	public ResultSet getClientsAllId(Connection conn,int id) throws SQLException {
 
 		Statement stmt = conn.createStatement();
@@ -69,6 +92,16 @@ public class Clients {
 	
 	
 
+	/**
+	 * 
+	 * @param conn
+	 * @param nom
+	 * @param adresse
+	 * @param numTVA
+	 * @param mail
+	 * @param numTel
+	 * @throws SQLException
+	 */
 	public void insertClient(Connection conn, String nom, String adresse,String numTVA, String mail,String numTel ) throws SQLException {
 
 		Statement stmt = conn.createStatement();
@@ -80,6 +113,10 @@ public class Clients {
 
 	}
 
+	/**
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
             public void run() {
