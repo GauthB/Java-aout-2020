@@ -4,7 +4,7 @@
 package controller;
 
 import  java.io.*;
-
+import model.Document;
 import javax.swing.JOptionPane;
 
 import  org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -17,24 +17,27 @@ import javax.swing.JOptionPane;
  *
  */
 
+
 public class GeneratePdf {
+
+	private Double totalhtva = 0.0;
 	
-	   public static void main(String[]args) {
+	   public GeneratePdf(Document document) {
 		   
-		   String statut ="Devis";
+		   String statut =document.getStatus();
 		   
-		   String clientNom = "Cardiomedic";
-		   String clientAdresse = "1360 Perwez";
-		   String clientTel = "0476958364";
-		   String clientTVA = "BE22186165618";
-		   String clientMail = "contact@cardiomedic.be";
+		   String clientNom = document.getClientInfo().getNom();
+		   String clientAdresse = document.getClientInfo().getAdresse();
+		   String clientTel = document.getClientInfo().getTel();
+		   String clientTVA = document.getClientInfo().getTVA();
+		   String clientMail = document.getClientInfo().getEmail();
 		
-		   
+		 
 		   
 	        try {
 	            String filename = "Facture.xls" ;
 	            HSSFWorkbook workbook = new HSSFWorkbook();
-	            HSSFSheet sheet = workbook.createSheet("Facture "+clientNom);  
+	            HSSFSheet sheet = workbook.createSheet(statut+" "+clientNom);  
 
 	            HSSFRow row0 = sheet.createRow((short)0);
 	            HSSFRow row2 = sheet.createRow((short)2);
@@ -49,7 +52,7 @@ public class GeneratePdf {
 	            row5.createCell(1).setCellValue("0472307670");
 	            row6.createCell(1).setCellValue("gauthier@wecodx.com");
 	            
-	            
+	           
 	            
 	            
 	            row2.createCell(3).setCellValue(clientNom);
@@ -60,30 +63,37 @@ public class GeneratePdf {
 
 	           
 	         
-	    		String data [][]= {
-	    			    {"1", "Hebergement",
-	    			     "100"},
-	    			    {"1", "Nom de domaine",
-	    			     "15"}
-	    			};
-	    		
 	    		int s=15;
-	    		Double totalhtva = 0.0;
+	    		
+
 	    		HSSFRow rowTitle = sheet.createRow((short)s-1);
     			rowTitle.createCell(1).setCellValue("Quantité");
     			rowTitle.createCell(2).setCellValue("Description");
     			rowTitle.createCell(3).setCellValue("Prix unitaire");
-	    		for ( int i = 0; i<data.length;i++ ) {
-	    			
+    			
+    			
+	    		for(int i = 0; i<document.getDescriptionList().size();i++) {
 	    			
 	    			
 	    			HSSFRow rowAll = sheet.createRow((short)s);
-	    			rowAll.createCell(1).setCellValue(data[i][0]);
-	    			rowAll.createCell(2).setCellValue(data[i][1]);
-	    			rowAll.createCell(3).setCellValue(data[i][2]+"€");
-	    			totalhtva+=Double.valueOf(data[i][2]);
+	    			rowAll.createCell(1).setCellValue(Integer.toString(document.getDescriptionList().get(i).getQuantite()));
+	    			rowAll.createCell(2).setCellValue(document.getDescriptionList().get(i).getDescription());
+	    			rowAll.createCell(3).setCellValue(String.valueOf(document.getDescriptionList().get(i).getPrix())+"€");
+	    			
 	    			s++;
+	    			
 	    		}
+	    		
+	    		for(int i = 0; i<document.getDescriptionList().size();i++) {
+	    			System.out.println(document.getDescriptionList().get(i).getPrix());
+	    			Double quant = (double) document.getDescriptionList().get(i).getQuantite();
+	    			Double finalT = quant * document.getDescriptionList().get(i).getPrix();
+	    			totalhtva+=finalT;
+	    		}
+	    		
+	    		
+	    		
+	    	
 	    		
 	    		HSSFRow rowHTVA = sheet.createRow((short)s+3);
 	    				rowHTVA.createCell(2).setCellValue("Total HTVA:");
@@ -109,7 +119,7 @@ public class GeneratePdf {
 	            workbook.write(fileOut);
 	            fileOut.close();
 	            workbook.close();
-	            System.out.println("Your excel file has been generated!");
+	            System.out.println("La facture s'est générée avec succès!");
 	            JFrame parent = new JFrame();
 
 	            JOptionPane.showMessageDialog(parent, "La facture s'est générée avec succès!");

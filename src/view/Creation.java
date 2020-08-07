@@ -7,7 +7,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.TableModelEvent;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 import controller.Utils;
 
@@ -22,6 +25,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JList;
 
 public class Creation extends JFrame {
 
@@ -35,6 +39,9 @@ public class Creation extends JFrame {
 	private JLabel lblQuantit;
 	private JLabel lblDescription;
 	private JLabel lblPrixHtva;
+	private JList list;
+	private JList list_2;
+	private JList list_3;
 
 
 
@@ -53,14 +60,14 @@ public class Creation extends JFrame {
 	
 	public Creation(Document document) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 300);
+		setBounds(100, 100, 600, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{99, 220, 44, 0, 0};
 		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
@@ -74,18 +81,6 @@ public class Creation extends JFrame {
 		
 		
 		
-        //Fausses données
-		String[] columnNames = {"Quantite",
-                "Description",
-                "Prix hors TVA"};
-		Object[][] data = {
-			    {"1", "Hebergement",
-			     "100"},
-			    {"1", "Nom de domaine",
-			     "15"},
-			    {"6", "Création (€/h)",
-			     "25"}
-			};
 		
 		lblQuantit = new JLabel("Quantité");
 		GridBagConstraints gbc_lblQuantit = new GridBagConstraints();
@@ -141,17 +136,40 @@ public class Creation extends JFrame {
 		gbc_btnAjouter.gridx = 3;
 		gbc_btnAjouter.gridy = 2;
 		contentPane.add(btnAjouter, gbc_btnAjouter);
-		JTable table = new JTable(data, columnNames);
 		
+		 
 		
+		List list_1 = new List();
+		GridBagConstraints gbc_list_1 = new GridBagConstraints();
+		gbc_list_1.insets = new Insets(0, 0, 0, 5);
+		gbc_list_1.fill = GridBagConstraints.BOTH;
+		gbc_list_1.gridx = 0;
+		gbc_list_1.gridy = 3;
+		contentPane.add(list_1, gbc_list_1);
+		
+	
+		
+		List list_2 = new List();
+		GridBagConstraints gbc_list_2 = new GridBagConstraints();
+		gbc_list_2.insets = new Insets(0, 0, 0, 5);
+		gbc_list_2.fill = GridBagConstraints.BOTH;
+		gbc_list_2.gridx = 1;
+		gbc_list_2.gridy = 3;
+		contentPane.add(list_2, gbc_list_2);
+		
+		List list_3 = new List();
+		GridBagConstraints gbc_list_3 = new GridBagConstraints();
+		gbc_list_3.insets = new Insets(0, 0, 0, 5);
+		gbc_list_3.fill = GridBagConstraints.BOTH;
+		gbc_list_3.gridx = 2;
+		gbc_list_3.gridy = 3;
+		contentPane.add(list_3, gbc_list_3);
 		
 		btnAjouter.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				String[] ligne = {"Quantite",
-		                "Description",
-		                "Prix hors TVA"};
+				
 				//data[1].add("6", "Création (€/h)",
 			     //"25");
 				if((Utils.isNumeric(textField.getText())==true)&&(Utils.isNumeric(textField_1.getText()))&&(!textField.getText().equals(""))&&(!textField_2.getText().equals(""))&&(!textField_1.getText().equals(""))) {
@@ -165,9 +183,11 @@ public class Creation extends JFrame {
 					System.out.println(document.getDescriptionList().get(0).getQuantite());
 					
 					
-					
-					
-					
+					//table.repaint();
+					//((AbstractTableModel) table).fireTableDataChanged();
+					list_1.add(textField.getText());
+					list_2.add(descript);
+					list_3.add(textField_1.getText());
 					System.out.println("Champ ok");
 					textField.setText("");
 					textField_2.setText("");
@@ -180,17 +200,11 @@ public class Creation extends JFrame {
 			}
 		});
 		
+
 		
 		
 		
-		//table = new JTable();
-		GridBagConstraints gbc_table = new GridBagConstraints();
-		gbc_table.insets = new Insets(0, 0, 0, 5);
-		gbc_table.gridwidth = 3;
-		gbc_table.fill = GridBagConstraints.BOTH;
-		gbc_table.gridx = 0;
-		gbc_table.gridy = 3;
-		contentPane.add(table, gbc_table);
+
 		
 		btnFin = new JButton("Fin");
 		GridBagConstraints gbc_btnFin = new GridBagConstraints();
@@ -198,11 +212,12 @@ public class Creation extends JFrame {
 		gbc_btnFin.gridy = 3;
 		contentPane.add(btnFin, gbc_btnFin);
 		
+		
 		btnFin.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Resume resume = new view.Resume();
+				Resume resume = new view.Resume(document);
 				resume.setVisible(true); 
 				setVisible(false);
 			}

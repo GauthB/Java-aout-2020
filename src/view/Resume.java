@@ -20,49 +20,49 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.awt.List;
 import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.Color;
+import model.Document;
 
 
 import javax.swing.JTextField;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
 public class Resume extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
 	private JTextField textField;
 	private JTextField htva;
 	private JTextField totalTVAfix;
 	private JTextField totalTVACFix;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Resume frame = new Resume();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	private Double total = 0.00;
+	private boolean verif = false;
 	
+	
+
+
 	/**
 	 * Create the frame.
 	 */
-	public Resume() {
-		
-		//pour les tests
-		Double total = 115.00;
-		int id = 2;
+	public Resume(Document document) {
 		
 		
+		
+		for(int i = 0; i<document.getDescriptionList().size();i++) {
+			System.out.println(document.getDescriptionList().get(i).getPrix());
+			Double quant = (double) document.getDescriptionList().get(i).getQuantite();
+			Double finalT = quant * document.getDescriptionList().get(i).getPrix();
+			total+=finalT;
+		}
+		
+		
+		int id = document.getClientInfo().getId();
+
+		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 650);
 		contentPane = new JPanel();
@@ -71,12 +71,12 @@ public class Resume extends JFrame {
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{64, 116, 152, 0, 0};
 		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWeights = new double[]{1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
-
-		JLabel lblFacture = new JLabel("en test");
+	
+		JLabel lblFacture = new JLabel(document.getStatus());
 		lblFacture.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		GridBagConstraints gbc_lblFacture = new GridBagConstraints();
 		gbc_lblFacture.gridwidth = 2;
@@ -173,24 +173,32 @@ public class Resume extends JFrame {
 		gbc_lblTlphone.gridy = 11;
 		contentPane.add(lblTlphone, gbc_lblTlphone);
 		
-		String[] columnNames = {"Quantite",
-                "Description",
-                "Prix hors TVA"};
-		Object[][] data = {
-			    {"1", "Hebergement",
-			     "100"},
-			    {"1", "Nom de domaine",
-			     "15"}
-			};
 		
-		table = new JTable(data, columnNames);
-		GridBagConstraints gbc_table = new GridBagConstraints();
-		gbc_table.gridwidth = 2;
-		gbc_table.insets = new Insets(0, 0, 5, 5);
-		gbc_table.fill = GridBagConstraints.BOTH;
-		gbc_table.gridx = 1;
-		gbc_table.gridy = 12;
-		contentPane.add(table, gbc_table);
+		
+		
+		List list_1 = new List();
+		GridBagConstraints gbc_list_1 = new GridBagConstraints();
+		gbc_list_1.insets = new Insets(0, 0, 5, 5);
+		gbc_list_1.fill = GridBagConstraints.BOTH;
+		gbc_list_1.gridx = 1;
+		gbc_list_1.gridy = 12;
+		contentPane.add(list_1, gbc_list_1);
+		
+		
+		List list = new List();
+		GridBagConstraints gbc_list = new GridBagConstraints();
+		gbc_list.insets = new Insets(0, 0, 5, 5);
+		gbc_list.fill = GridBagConstraints.BOTH;
+		gbc_list.gridx = 2;
+		gbc_list.gridy = 12;
+		contentPane.add(list, gbc_list);
+		
+
+		for(int i = 0; i<document.getDescriptionList().size();i++) {
+			list_1.add(Integer.toString(document.getDescriptionList().get(i).getQuantite()) +" "+document.getDescriptionList().get(i).getDescription());
+			list.add(String.valueOf(document.getDescriptionList().get(i).getPrix())+" €");
+		}
+		
 		
 		JLabel lblTva = new JLabel("% TVA:");
 		GridBagConstraints gbc_lblTva = new GridBagConstraints();
@@ -221,17 +229,18 @@ public class Resume extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Resume resume = new Resume();
+				//Resume resume = new Resume();
 				try {
 					double TVA = Double.parseDouble(textField.getText());
 					textField.setText(TVA+"");
+					
 					htva.setText(total+"€");
 					Double TVAfix = total*TVA/100;
 					totalTVAfix.setText(TVAfix+"€");
 					Double TVACFix = TVAfix+total;
 					totalTVACFix.setText(TVACFix+"€");
 					//lblTotalTvac.setText(TVA+"%");
-					
+					verif=true;
 					
 					
 				}
@@ -327,10 +336,18 @@ public class Resume extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				setVisible(false);
 				
-				GeneratePdf generatePdf = new controller.GeneratePdf();
-				generatePdf.main(columnNames);
+				if(verif==false) {
+					JFrame parent = new JFrame();
+
+		            JOptionPane.showMessageDialog(parent, "Le total n'a pas été calculé.");
+				}else {
+
+					setVisible(false);
+					
+					GeneratePdf generatePdf = new GeneratePdf(document);	
+				}
+				
 			}
 		});
 	}

@@ -47,6 +47,7 @@ public class ClientsView extends JFrame {
 		Clients clients = new Clients();
 		List list = new List();
 		// remplissage du tableau
+	
 		try {
 			ResultSet clientTb= clients.getClients(clients.connect()) ;
 			while ( clientTb.next() ) {
