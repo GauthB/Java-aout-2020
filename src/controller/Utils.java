@@ -14,7 +14,7 @@ public class Utils {
 
 	/**
 	 * 
-	 * @return
+	 * @return the current date
 	 */
 	public static LocalDate GetDate() {
 		//Get Date Today
@@ -28,7 +28,7 @@ public class Utils {
 	/**
 	 * 
 	 * @param str
-	 * @return
+	 * @return boolean if the variable is numeric
 	 */
 	public static boolean isNumeric(String str) { 
 		  try {  

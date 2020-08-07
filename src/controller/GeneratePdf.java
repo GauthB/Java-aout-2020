@@ -21,14 +21,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 /**
  * @author gauthierbohyn
- *
+ * this class allows to generate a pdf for the requested document
  */
 
 
 public class GeneratePdf {
 
 	private Double totalhtva = 0.0;
-	
 	/**
 	 * 
 	 * @param document
@@ -75,15 +74,9 @@ public class GeneratePdf {
 
 	           
 	         
-
-	    		
-	    		//LocalDate today = Utils.GetDate();
-	    		//System.out.println(today);
 	    		int s=15;
-	    		
-	    		//sheet.createRow((short)s-3).createCell(1).setCellValue(today);
     			
-	    		Double totalhtva = 0.0;
+	    		
 
 	    		HSSFRow rowTitle = sheet.createRow((short)s-1);
     			rowTitle.createCell(1).setCellValue("Quantité");
@@ -144,6 +137,7 @@ public class GeneratePdf {
 	            JOptionPane.showMessageDialog(parent, "La facture s'est générée avec succès!");
 
 	        } catch ( Exception ex ) {
+	        	System.out.println("ERREUR: un problème est surevnu: \n");
 	            System.out.println(ex);
 	        }
 	    }

@@ -18,18 +18,16 @@ import controller.Clients;
 
 /**
  * @author gauthierbohyn
- *
+ * this class allows to generate a pdf with all the information of all the customers of the database
  */
 public class ListingClients {
 
 	/**
 	 * 
-	 * @param args
 	 */
 	   public ListingClients() {
 	
 		Clients clients = new Clients();
-		
 		
 		
 		  try {
@@ -75,6 +73,7 @@ public class ListingClients {
 		        JOptionPane.showMessageDialog(parent, "Le listing des clients s'est généré avec succès!");
 		
 		    } catch ( Exception ex ) {
+		    	System.out.println("ERREUR: un problème est surevnu: \n");
 		        System.out.println(ex);
 		    }
 	   }

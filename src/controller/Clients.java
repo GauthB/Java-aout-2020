@@ -16,7 +16,7 @@ public class Clients {
 
 	/**
 	 * 
-	 * @return
+	 * @return  if the connection was made correctly
 	 */
 	public Connection connect() {
 
@@ -43,7 +43,7 @@ public class Clients {
 	/**
 	 * 
 	 * @param conn
-	 * @return
+	 * @return all information about all customers
 	 * @throws SQLException
 	 */
 	public ResultSet getClients(Connection conn) throws SQLException {
@@ -60,7 +60,7 @@ public class Clients {
 	 * 
 	 * @param conn
 	 * @param ref
-	 * @return
+	 * @return all information on the selected client
 	 * @throws SQLException
 	 */
 	public ResultSet getClientsId(Connection conn,String ref) throws SQLException {
@@ -77,7 +77,7 @@ public class Clients {
 	 * 
 	 * @param conn
 	 * @param id
-	 * @return
+	 * @return all customer information according to id
 	 * @throws SQLException
 	 */
 	public ResultSet getClientsAllId(Connection conn,int id) throws SQLException {
@@ -93,7 +93,7 @@ public class Clients {
 	
 
 	/**
-	 * 
+	 * insert in the DB
 	 * @param conn
 	 * @param nom
 	 * @param adresse
@@ -117,7 +117,7 @@ public class Clients {
 	 * 
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
             public void run() {
             	Clients client = new Clients();
@@ -131,16 +131,11 @@ public class Clients {
                     }
 
 
-                	//INSERT
-                	//client.insertClient(client.connect());
-
-
-
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
             }
         });
-	}
+	}*/
 }
