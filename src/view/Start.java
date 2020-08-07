@@ -102,8 +102,9 @@ public class Start extends JFrame {
 
 		            JOptionPane.showMessageDialog(parent, "ERREUR: Vous n'êtes pas connecté à la base de données.");
 				} 
-				status.setStatus("Devis");
-				ClientsView clientsView = new view.ClientsView();
+				Document document = new Document("Devis");
+				
+				ClientsView clientsView = new view.ClientsView(document);
 
 				clientsView.setVisible(true); 
 				setVisible(false);
@@ -142,10 +143,11 @@ public class Start extends JFrame {
 
 		            JOptionPane.showMessageDialog(parent, "ERREUR: Vous n'êtes pas connecté à la base de données.");
 				} 
-				ClientsView clientsView = new view.ClientsView();
+				Document document = new Document("Devis");
+				
+				ClientsView clientsView = new view.ClientsView(document);
 				clientsView.setVisible(true); 
 				setVisible(false);
-				status.setStatus("Facture");
 				
 
 			}
