@@ -30,10 +30,10 @@ public class testDb {
 	void testConnection() {
 			Clients clients = new Clients();
 			if (clients.connect()!=null) {
-				System.out.print("La connection a été éffectuée");
+				System.out.print("La connection a été éffectuée \n");
 			}
 			else {
-				System.out.print("Erreur de connection avec la db");
+				System.out.print("Erreur de connection avec la db \n");
 				fail("Erreur de connection avec la db");
 		}  
 	}
@@ -47,10 +47,10 @@ public class testDb {
 		void testRequete() throws SQLException {
 				Clients clients = new Clients();
 				if (clients.getClients(clients.connect())!=null) {
-					System.out.print("La base de données n'est pas vide");
+					System.out.print("La base de données n'est pas vide \n");
 				}
 				else {
-					System.out.print("La base de données est vide");
+					System.out.print("La base de données est vide \n");
 					fail("La base de données est vide");
 				}  
 		}

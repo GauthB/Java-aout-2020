@@ -37,22 +37,9 @@ public class Resume extends JFrame {
 	private JTextField totalTVAfix;
 	private JTextField totalTVACFix;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Resume frame = new Resume();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
+
+	
 	/**
 	 * Create the frame.
 	 */

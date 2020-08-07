@@ -52,6 +52,7 @@ public class Creation extends JFrame {
 		});
 	}
 
+	
 	/**
 	 * Create the frame.
 	 */
@@ -84,8 +85,6 @@ public class Creation extends JFrame {
 		gbc_lblCration.gridx = 0;
 		gbc_lblCration.gridy = 0;
 		contentPane.add(lblCration, gbc_lblCration);
-		
-		
 		
 		
         //Fausses données
@@ -155,7 +154,6 @@ public class Creation extends JFrame {
 		gbc_btnAjouter.gridx = 3;
 		gbc_btnAjouter.gridy = 2;
 		contentPane.add(btnAjouter, gbc_btnAjouter);
-		JTable table = new JTable(data, columnNames);
 		
 		
 		
@@ -185,6 +183,9 @@ public class Creation extends JFrame {
 		
 		
 		
+		
+
+		JTable table = new JTable(data, columnNames);
 		
 		//table = new JTable();
 		GridBagConstraints gbc_table = new GridBagConstraints();
