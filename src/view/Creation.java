@@ -45,6 +45,7 @@ public class Creation extends JFrame {
 
 
 
+	
 	/**
 	 * Create the frame.
 	 */
@@ -77,8 +78,6 @@ public class Creation extends JFrame {
 		gbc_lblCration.gridx = 0;
 		gbc_lblCration.gridy = 0;
 		contentPane.add(lblCration, gbc_lblCration);
-		
-		
 		
 		
 		
@@ -204,6 +203,7 @@ public class Creation extends JFrame {
 		
 		
 		
+
 
 		
 		btnFin = new JButton("Fin");

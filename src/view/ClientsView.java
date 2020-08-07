@@ -29,7 +29,9 @@ public class ClientsView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+
 	public ClientsView(Document document) {
+
 
 		
 		

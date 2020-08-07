@@ -1,5 +1,7 @@
 package view;
 
+import static org.junit.jupiter.api.Assertions.fail;
+
 import java.awt.BorderLayout;
 import model.Document;
 
@@ -12,10 +14,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controller.Clients;
 import controller.Utils;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import view.ClientsView;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -45,6 +50,9 @@ public class Start extends JFrame {
 	 * Create the frame.
 	 */
 	public Start() {
+		
+		 
+		
 		Utils utils = new Utils();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 350, 200);
@@ -77,19 +85,29 @@ public class Start extends JFrame {
 		gbc_btnDevis.gridx = 0;
 		gbc_btnDevis.gridy = 1;
 		contentPane.add(btnDevis, gbc_btnDevis);
+		Clients clients = new Clients();
 		//btnDevis.addActionListener(this);
 		
 		btnDevis.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
-				
-				Document document = new Document("Devis");
-				
-				ClientsView clientsView = new view.ClientsView(document);
+
+				if (clients.connect()!=null) {
+					System.out.print("La connection a été éffectuée \n");
+				}
+				else {
+					System.out.print("Erreur de connection avec la db \n");
+					JFrame parent = new JFrame();
+
+		            JOptionPane.showMessageDialog(parent, "ERREUR: Vous n'êtes pas connecté à la base de données.");
+				} 
+				status.setStatus("Devis");
+				ClientsView clientsView = new view.ClientsView();
+
 				clientsView.setVisible(true); 
 				setVisible(false);
+				
 			}
 		});
 		
@@ -115,12 +133,33 @@ public class Start extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 
-				Document document = new Document("Facture");
-				ClientsView clientsView = new view.ClientsView(document);
+				if (clients.connect()!=null) {
+					System.out.print("La connection a été éffectuée \n");
+				}
+				else {
+					System.out.print("Erreur de connection avec la db \n");
+					JFrame parent = new JFrame();
+
+		            JOptionPane.showMessageDialog(parent, "ERREUR: Vous n'êtes pas connecté à la base de données.");
+				} 
+				ClientsView clientsView = new view.ClientsView();
 				clientsView.setVisible(true); 
 				setVisible(false);
+				status.setStatus("Facture");
+				
+
 			}
 		});
+		
+		if (clients.connect()!=null) {
+			System.out.print("La connection a été éffectuée \n");
+		}
+		else {
+			System.out.print("Erreur de connection avec la db \n");
+			JFrame parent = new JFrame();
+
+            JOptionPane.showMessageDialog(parent, "ERREUR: Vous n'êtes pas connecté à la base de données.");
+		} 
 	}
 
 }

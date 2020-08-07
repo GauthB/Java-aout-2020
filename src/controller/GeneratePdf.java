@@ -4,7 +4,14 @@
 package controller;
 
 import  java.io.*;
+
 import model.Document;
+
+import java.time.LocalDate;
+
+import  model.Status;
+
+
 import javax.swing.JOptionPane;
 
 import  org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -39,6 +46,7 @@ public class GeneratePdf {
 	            HSSFWorkbook workbook = new HSSFWorkbook();
 	            HSSFSheet sheet = workbook.createSheet(statut+" "+clientNom);  
 
+	            
 	            HSSFRow row0 = sheet.createRow((short)0);
 	            HSSFRow row2 = sheet.createRow((short)2);
 	            HSSFRow row3 = sheet.createRow((short)3);
@@ -63,8 +71,15 @@ public class GeneratePdf {
 
 	           
 	         
+
+	    		
+	    		//LocalDate today = Utils.GetDate();
+	    		//System.out.println(today);
 	    		int s=15;
 	    		
+	    		//sheet.createRow((short)s-3).createCell(1).setCellValue(today);
+    			
+	    		Double totalhtva = 0.0;
 
 	    		HSSFRow rowTitle = sheet.createRow((short)s-1);
     			rowTitle.createCell(1).setCellValue("Quantité");
