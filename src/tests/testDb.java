@@ -23,9 +23,9 @@ import org.junit.jupiter.api.Test;
 public class testDb {
 	
 
-/**
- *  Tester la connexion à la base de données
- */
+	/**
+	 *  Test the connection to the database
+	 */
 	@Test
 	void testConnection() {
 			Clients clients = new Clients();
@@ -39,8 +39,8 @@ public class testDb {
 	}
 	
 	/**
-	 *  Tester une requete 
-	 *  Vérifier si la base de données n'est pas vide.
+	 *  Test a request
+	 * Check if the database is not empty.
 	 * @throws SQLException 
 	 */
 		@Test
