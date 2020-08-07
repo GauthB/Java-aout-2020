@@ -11,15 +11,20 @@ import java.util.List;
 import model.ClientInfo;
 /**
  * @author gauthierbohyn
- *
+ * this class allows to collect all the useful information for the correct filling of the document that we are going to generate
  */
+
+
 public class Document {
 
 	private String status;
 	private ClientInfo clientInfo;
 	private List<Description> descriptionList = new ArrayList<Description>();
 	
-	
+	/**
+	 * 
+	 * @param status
+	 */
 	public Document(String status) {
 		//System.out.println("----");
 		System.out.println(status);
@@ -27,12 +32,22 @@ public class Document {
 		this.status = status;
 	}
 	
+	/**
+	 * @param id
+	 * @throws SQLException
+	 */
 	public void setInfoClient(int id) throws SQLException {
 		
 		this.clientInfo = new ClientInfo(id);
 		System.out.println(this.clientInfo.getNom());
 	}
 	
+	/**
+	 * 
+	 * @param quantite
+	 * @param descript
+	 * @param prix
+	 */
 	public void addDescription(int quantite, String descript, Double prix) {
 		Description description = new Description(quantite, descript, prix);
 

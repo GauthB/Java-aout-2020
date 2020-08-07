@@ -6,6 +6,7 @@ package model;
 /**
  * @author gauthierbohyn
  *
+ * this class makes it possible to collect all the information for each description.
  */
 public class Description {
 
@@ -14,7 +15,11 @@ public class Description {
 	private Double prix;
 	
 	
-	
+	/**
+	 * @param quantite
+	 * @param description
+	 * @param prix
+	 */
 	public Description(int quantite, String description, Double prix) {
 		this.quantite=quantite;
 		this.description = description;

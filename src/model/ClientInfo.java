@@ -10,6 +10,7 @@ import controller.Clients;
 /**
  * @author gauthierbohyn
  *
+ * this class is used to collect all the information for the client to whom we will send the document
  */
 public class ClientInfo {
 
@@ -21,7 +22,6 @@ public class ClientInfo {
 	private  String tel;
 	
 	/**
-	 * 
 	 * @param id
 	 * @throws SQLException
 	 */
