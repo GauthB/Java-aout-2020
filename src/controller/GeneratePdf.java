@@ -113,7 +113,7 @@ public class GeneratePdf {
 	    		
 	    		HSSFRow rowTotalTva = sheet.createRow((short)s+4);
 	    			rowTotalTva.createCell(2).setCellValue("Total TVA:");
-	    			rowTotalTva.createCell(3).setCellValue(totalhtva*21/100+" €");
+	    			rowTotalTva.createCell(3).setCellValue(totalhtva*document.getMontantTVA()/100+" €");
 	    			
 	    		HSSFRow rowTotalTVAC = sheet.createRow((short)s+5);
 	    			rowTotalTVAC.createCell(2).setCellValue("Total TVAC:");

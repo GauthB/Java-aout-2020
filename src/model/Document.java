@@ -20,7 +20,22 @@ public class Document {
 	private String status;
 	private ClientInfo clientInfo;
 	private List<Description> descriptionList = new ArrayList<Description>();
+	private Double montantTVA;
 	
+	/**
+	 * @return the montantTVA
+	 */
+	public Double getMontantTVA() {
+		return montantTVA;
+	}
+
+	/**
+	 * @param montantTVA the montantTVA to set
+	 */
+	public void setMontantTVA(Double montantTVA) {
+		this.montantTVA = montantTVA;
+	}
+
 	/**
 	 * 
 	 * @param status
