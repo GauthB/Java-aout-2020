@@ -21,6 +21,8 @@ import java.awt.Insets;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -39,6 +41,7 @@ public class Creation extends JFrame {
 	private JLabel lblQuantit;
 	private JLabel lblDescription;
 	private JLabel lblPrixHtva;
+	private int nbrDescript=0;
 
 
 	/**
@@ -47,14 +50,14 @@ public class Creation extends JFrame {
 	 */
 	public Creation(Document document) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 400);
+		setBounds(100, 100, 800, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{99, 220, 44, 0, 0};
+		gbl_contentPane.columnWidths = new int[]{99, 220, 44, 0, 0, 0};
 		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
@@ -81,7 +84,7 @@ public class Creation extends JFrame {
 		gbc_lblDescription.gridy = 1;
 		contentPane.add(lblDescription, gbc_lblDescription);
 		
-		lblPrixHtva = new JLabel("Prix HTVA");
+		lblPrixHtva = new JLabel("Prix unitaire HTVA");
 		GridBagConstraints gbc_lblPrixHtva = new GridBagConstraints();
 		gbc_lblPrixHtva.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPrixHtva.gridx = 2;
@@ -118,7 +121,7 @@ public class Creation extends JFrame {
 		btnAjouter = new JButton("Ajouter");
 		GridBagConstraints gbc_btnAjouter = new GridBagConstraints();
 		gbc_btnAjouter.insets = new Insets(0, 0, 5, 0);
-		gbc_btnAjouter.gridx = 3;
+		gbc_btnAjouter.gridx = 4;
 		gbc_btnAjouter.gridy = 2;
 		contentPane.add(btnAjouter, gbc_btnAjouter);
 		
@@ -150,6 +153,14 @@ public class Creation extends JFrame {
 		gbc_list_3.gridy = 3;
 		contentPane.add(list_3, gbc_list_3);
 		
+		List listDel = new List();
+		GridBagConstraints gbc_list = new GridBagConstraints();
+		gbc_list.insets = new Insets(0, 0, 0, 5);
+		gbc_list.fill = GridBagConstraints.BOTH;
+		gbc_list.gridx = 3;
+		gbc_list.gridy = 3;
+		contentPane.add(listDel, gbc_list);
+		
 		/**
 		 * The button add to the visual list and in the document variable
 		 */
@@ -157,10 +168,10 @@ public class Creation extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+				nbrDescript=document.getDescriptionList().size();
 				//Check if all values are valid
 				if((Utils.isNumeric(textField.getText())==true)&&(Utils.isNumeric(textField_1.getText()))&&(!textField.getText().equals(""))&&(!textField_2.getText().equals(""))&&(!textField_1.getText().equals(""))) {
-			
+					nbrDescript ++;
 				
 					int quant = Integer.parseInt(textField.getText());
 					String descript = textField_2.getText();
@@ -170,7 +181,8 @@ public class Creation extends JFrame {
 					
 					list_1.add(textField.getText());
 					list_2.add(descript);
-					list_3.add(textField_1.getText());
+					list_3.add(textField_1.getText()+ " €");
+					listDel.add("Supprimer ligne "+nbrDescript);
 					System.out.println("Champ ok");
 					textField.setText("");
 					textField_2.setText("");
@@ -186,12 +198,41 @@ public class Creation extends JFrame {
 			}
 		});
 		
-
+		/**
+		 * allows to delete a line in the document if we made a mistake
+		 */
+		listDel.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				int ligneSupp;
+				// TODO Auto-generated method stub
+				ligneSupp=Integer.parseInt(e.getActionCommand().substring(16));
+				ligneSupp=ligneSupp-1;
+				System.out.println(ligneSupp);
+				document.delDescription(ligneSupp);
+				list_1.remove(ligneSupp);
+				list_2.remove(ligneSupp);
+				list_3.remove(ligneSupp);
+				listDel.remove(ligneSupp);
+				
+				int s=0;
+				listDel.clear();
+				for(int i = 0;i<document.getDescriptionList().size();i++) {
+					s=i+1;
+					listDel.add("Supprimer ligne "+s);
+				}
+			}
+		});
+		
+	
 		
 		
 		btnFin = new JButton("Fin");
 		GridBagConstraints gbc_btnFin = new GridBagConstraints();
-		gbc_btnFin.gridx = 3;
+		gbc_btnFin.gridx = 4;
 		gbc_btnFin.gridy = 3;
 		contentPane.add(btnFin, gbc_btnFin);
 		
@@ -202,9 +243,16 @@ public class Creation extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Resume resume = new view.Resume(document);
-				resume.setVisible(true); 
-				setVisible(false);
+				if(document.getDescriptionList().size()==0) {
+					JFrame parent = new JFrame();
+		            JOptionPane.showMessageDialog(parent, "Vous n'avez rien encodé dans le document.");
+				}
+				else {
+					Resume resume = new view.Resume(document);
+					resume.setVisible(true); 
+					setVisible(false);
+				}
+			
 			}
 		});
 		

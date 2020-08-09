@@ -55,6 +55,10 @@ public class Document {
 		this.descriptionList.add(description);
 	}
 
+	public void delDescription(int nbr) {
+		this.descriptionList.remove(nbr);
+	}
+	
 	/**
 	 * @return the status
 	 */
