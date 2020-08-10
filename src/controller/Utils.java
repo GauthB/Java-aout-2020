@@ -10,7 +10,7 @@ import java.time.ZoneId;
  * @author gauthierbohyn
  *
  */
-public class Utils {
+public class Utils implements IntUtils{
 
 	/**
 	 * 
