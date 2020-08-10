@@ -149,7 +149,7 @@ public class Start extends JFrame {
 
 					JOptionPane.showMessageDialog(parent, "ERREUR: Vous n'êtes pas connecté à la base de données.");
 				}
-				Document document = new Document("Devis");
+				Document document = new Document("Facture");
 
 				ClientsView clientsView = new view.ClientsView(document);
 				clientsView.setVisible(true);
