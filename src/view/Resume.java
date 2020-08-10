@@ -233,7 +233,7 @@ public class Resume extends JFrame {
 				try {
 					double TVA = Double.parseDouble(textField.getText());
 					textField.setText(TVA+"");
-					
+					document.setMontantTVA(TVA);
 					htva.setText(total+"€");
 					Double TVAfix = total*TVA/100;
 					totalTVAfix.setText(TVAfix+"€");

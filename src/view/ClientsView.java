@@ -76,10 +76,10 @@ public class ClientsView extends JFrame {
 					while ( clientId.next() ) {
 		                int id = Integer.parseInt(clientId.getString("id"));
 		                document.setInfoClient(id);
-		                
 		                Creation creation = new view.Creation(document);
 		                creation.setVisible(true); 
-						setVisible(false);
+		                setVisible(false);
+						
 		            }
 					
 				} catch (SQLException e1) {
@@ -90,7 +90,7 @@ public class ClientsView extends JFrame {
 				
 			}
 		});
-		
+		//setVisible(false);
 		list.setBackground(Color.GRAY);
 		contentPane.add(list, BorderLayout.WEST);
 		
@@ -106,6 +106,8 @@ public class ClientsView extends JFrame {
 				// TODO Auto-generated method stub
 				AjoutClient ajoutClient = new view.AjoutClient(document);
 				ajoutClient.setVisible(true); 
+				setDefaultCloseOperation(ClientsView.HIDE_ON_CLOSE);
+				setVisible(false);
 			}
 		});
 	}
