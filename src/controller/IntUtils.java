@@ -15,13 +15,18 @@ public interface IntUtils {
 	 * 
 	 * @return the current date
 	 */
-	public LocalDate GetDate();
+	public static LocalDate GetDate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	/**
 	 * 
 	 * @param str
 	 * @return boolean if the variable is numeric
 	 */
-	public  boolean isNumeric(String str);
+	public static boolean isNumeric(String str) {
+		return false;
+	}
 	
 }
