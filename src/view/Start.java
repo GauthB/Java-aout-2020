@@ -1,6 +1,5 @@
 package view;
 
-
 import java.awt.BorderLayout;
 import model.Document;
 import java.awt.EventQueue;
@@ -28,6 +27,7 @@ public class Start extends JFrame {
 
 	/**
 	 * Start application
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -47,19 +47,19 @@ public class Start extends JFrame {
 	 * Start
 	 */
 	public Start() {
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 350, 200);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{173, 171, 0};
-		gbl_contentPane.rowHeights = new int[]{16, 102, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWidths = new int[] { 173, 171, 0 };
+		gbl_contentPane.rowHeights = new int[] { 16, 102, 0, 0 };
+		gbl_contentPane.columnWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
-		
+
 		JLabel lblVeuillezSelectionnerCe = new JLabel("Veuillez selectionner ce que vous voulez générer:");
 		lblVeuillezSelectionnerCe.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		GridBagConstraints gbc_lblVeuillezSelectionnerCe = new GridBagConstraints();
@@ -70,8 +70,7 @@ public class Start extends JFrame {
 		gbc_lblVeuillezSelectionnerCe.gridx = 0;
 		gbc_lblVeuillezSelectionnerCe.gridy = 0;
 		contentPane.add(lblVeuillezSelectionnerCe, gbc_lblVeuillezSelectionnerCe);
-		
-		
+
 		JButton btnDevis = new JButton("Devis");
 		GridBagConstraints gbc_btnDevis = new GridBagConstraints();
 		gbc_btnDevis.fill = GridBagConstraints.VERTICAL;
@@ -81,34 +80,31 @@ public class Start extends JFrame {
 		contentPane.add(btnDevis, gbc_btnDevis);
 		Clients clients = new Clients();
 		/**
-		 * if you choose "quote"
-		 * document.status = "Devis"
+		 * if you choose "quote" document.status = "Devis"
 		 */
 		btnDevis.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 
-				if (clients.connect()!=null) {
+				if (clients.connect() != null) {
 					System.out.print("Vérification de la connection à la db: OK\n");
-				}
-				else {
+				} else {
 					System.out.print("Erreur de connection avec la db \n");
 					JFrame parent = new JFrame();
 
-		            JOptionPane.showMessageDialog(parent, "ERREUR: Vous n'êtes pas connecté à la base de données.");
-				} 
+					JOptionPane.showMessageDialog(parent, "ERREUR: Vous n'êtes pas connecté à la base de données.");
+				}
 				Document document = new Document("Devis");
-				
+
 				ClientsView clientsView = new view.ClientsView(document);
 
-				clientsView.setVisible(true); 
+				clientsView.setVisible(true);
 				setVisible(false);
-				
+
 			}
 		});
-		
-		
+
 		JButton btnFacture = new JButton("Facture");
 		GridBagConstraints gbc_btnFacture = new GridBagConstraints();
 		gbc_btnFacture.insets = new Insets(0, 0, 5, 0);
@@ -116,7 +112,7 @@ public class Start extends JFrame {
 		gbc_btnFacture.gridx = 1;
 		gbc_btnFacture.gridy = 1;
 		contentPane.add(btnFacture, gbc_btnFacture);
-		
+
 		JButton btnExcelClient = new JButton("Générer listing clients");
 		GridBagConstraints gbc_btnExcelClient = new GridBagConstraints();
 		gbc_btnExcelClient.gridwidth = 2;
@@ -124,48 +120,43 @@ public class Start extends JFrame {
 		gbc_btnExcelClient.gridx = 0;
 		gbc_btnExcelClient.gridy = 2;
 		contentPane.add(btnExcelClient, gbc_btnExcelClient);
-		
-		
+
 		/**
-		 * generate customer listing 
+		 * generate customer listing
 		 */
 		btnExcelClient.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				ListingClients listingClients = new ListingClients();
-				
+
 			}
 		});
-		
-		
-		
+
 		/**
-		 * if you choose "invoice"
-		 * document.status = "Facture"
+		 * if you choose "invoice" document.status = "Facture"
 		 */
 		btnFacture.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 
-				if (clients.connect()!=null) {
+				if (clients.connect() != null) {
 					System.out.print("Vérification de la connection à la db: OK \n");
-				}
-				else {
+				} else {
 					System.out.print("Erreur de connection avec la db \n");
 					JFrame parent = new JFrame();
 
-		            JOptionPane.showMessageDialog(parent, "ERREUR: Vous n'êtes pas connecté à la base de données.");
-				} 
-				Document document = new Document("Devis");
-				
+					JOptionPane.showMessageDialog(parent, "ERREUR: Vous n'êtes pas connecté à la base de données.");
+				}
+				Document document = new Document("Facture");
+
 				ClientsView clientsView = new view.ClientsView(document);
-				clientsView.setVisible(true); 
+				clientsView.setVisible(true);
 				setVisible(false);
-				
+
 			}
 		});
-		
+
 	}
 }
