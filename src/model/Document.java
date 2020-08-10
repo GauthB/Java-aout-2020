@@ -2,6 +2,7 @@
  * 
  */
 package model;
+
 import model.Description;
 
 import java.sql.SQLException;
@@ -9,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.ClientInfo;
-/**
- * @author gauthierbohyn
- * this class allows to collect all the useful information for the correct filling of the document that we are going to generate
- */
 
+/**
+ * @author gauthierbohyn this class allows to collect all the useful information
+ *         for the correct filling of the document that we are going to generate
+ */
 
 public class Document {
 
@@ -21,7 +22,7 @@ public class Document {
 	private ClientInfo clientInfo;
 	private List<Description> descriptionList = new ArrayList<Description>();
 	private Double montantTVA;
-	
+
 	/**
 	 * @return the montantTVA
 	 */
@@ -41,22 +42,22 @@ public class Document {
 	 * @param status
 	 */
 	public Document(String status) {
-		//System.out.println("----");
+		// System.out.println("----");
 		System.out.println(status);
-		//System.out.println("----");
+		// System.out.println("----");
 		this.status = status;
 	}
-	
+
 	/**
 	 * @param id
 	 * @throws SQLException
 	 */
 	public void setInfoClient(int id) throws SQLException {
-		
+
 		this.clientInfo = new ClientInfo(id);
 		System.out.println(this.clientInfo.getNom());
 	}
-	
+
 	/**
 	 * 
 	 * @param quantite
@@ -73,7 +74,7 @@ public class Document {
 	public void delDescription(int nbr) {
 		this.descriptionList.remove(nbr);
 	}
-	
+
 	/**
 	 * @return the status
 	 */
@@ -115,8 +116,5 @@ public class Document {
 	public void setDescriptionList(List<Description> descriptionList) {
 		this.descriptionList = descriptionList;
 	}
-	
-	
-	
-	
+
 }

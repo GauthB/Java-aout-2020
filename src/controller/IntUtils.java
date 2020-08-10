@@ -19,7 +19,7 @@ public interface IntUtils {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	/**
 	 * 
 	 * @param str
@@ -28,5 +28,5 @@ public interface IntUtils {
 	public static boolean isNumeric(String str) {
 		return false;
 	}
-	
+
 }

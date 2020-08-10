@@ -28,10 +28,10 @@ import javax.swing.JButton;
 import java.awt.Color;
 import model.Document;
 
-
 import javax.swing.JTextField;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+
 public class Resume extends JFrame {
 
 	private JPanel contentPane;
@@ -41,29 +41,19 @@ public class Resume extends JFrame {
 	private JTextField totalTVACFix;
 	private Double total = 0.00;
 	private boolean verif = false;
-	
-	
 
-
-
-	
 	/**
 	 * Create the frame.
 	 */
 	public Resume(Document document) {
-		
-		
-		
-		for(int i = 0; i<document.getDescriptionList().size();i++) {
+
+		for (int i = 0; i < document.getDescriptionList().size(); i++) {
 			Double quant = (double) document.getDescriptionList().get(i).getQuantite();
 			Double finalT = quant * document.getDescriptionList().get(i).getPrix();
-			total+=finalT;
+			total += finalT;
 		}
-		
-		
-		int id = document.getClientInfo().getId();
 
-		
+		int id = document.getClientInfo().getId();
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 650);
@@ -71,13 +61,13 @@ public class Resume extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{64, 116, 152, 0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWidths = new int[] { 64, 116, 152, 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_contentPane.columnWeights = new double[] { 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+				0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
-		
-	
+
 		JLabel lblFacture = new JLabel(document.getStatus());
 		lblFacture.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		GridBagConstraints gbc_lblFacture = new GridBagConstraints();
@@ -86,11 +76,11 @@ public class Resume extends JFrame {
 		gbc_lblFacture.gridx = 1;
 		gbc_lblFacture.gridy = 0;
 		contentPane.add(lblFacture, gbc_lblFacture);
-		
+
 		Utils utils = new Utils();
 		LocalDate today = Utils.GetDate();
-		
-		JLabel lblDate = new JLabel("Date: "+today);
+
+		JLabel lblDate = new JLabel("Date: " + today);
 		GridBagConstraints gbc_lblDate = new GridBagConstraints();
 		gbc_lblDate.anchor = GridBagConstraints.WEST;
 		gbc_lblDate.insets = new Insets(0, 0, 5, 5);
@@ -98,29 +88,29 @@ public class Resume extends JFrame {
 		gbc_lblDate.gridy = 1;
 		contentPane.add(lblDate, gbc_lblDate);
 		Clients clients = new Clients();
-		
+
 		String firstName = "";
 		String adresse = "";
-		String numTVA="";
+		String numTVA = "";
 		String mail = "";
 		String numTel = "";
-		
+
 		try {
-			ResultSet clientId= clients.getClientsAllId(clients.connect(),id) ;
-			while ( clientId.next() ) {
-                firstName = clientId.getString("nom");
-                adresse = clientId.getString("adresse");
-                numTVA = clientId.getString("tva");
-                mail = clientId.getString("email");
-                numTel = clientId.getString("telephone");
-            }
-			
+			ResultSet clientId = clients.getClientsAllId(clients.connect(), id);
+			while (clientId.next()) {
+				firstName = clientId.getString("nom");
+				adresse = clientId.getString("adresse");
+				numTVA = clientId.getString("tva");
+				mail = clientId.getString("email");
+				numTel = clientId.getString("telephone");
+			}
+
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			System.out.println("erreur dans le getClients");
 			e1.printStackTrace();
 		}
-		
+
 		JLabel lblClient = new JLabel("Client:");
 		lblClient.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 		GridBagConstraints gbc_lblClient = new GridBagConstraints();
@@ -128,7 +118,7 @@ public class Resume extends JFrame {
 		gbc_lblClient.gridx = 0;
 		gbc_lblClient.gridy = 3;
 		contentPane.add(lblClient, gbc_lblClient);
-		
+
 		JLabel lblNom = new JLabel(firstName);
 		lblNom.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
 		GridBagConstraints gbc_lblNom = new GridBagConstraints();
@@ -137,7 +127,7 @@ public class Resume extends JFrame {
 		gbc_lblNom.gridx = 1;
 		gbc_lblNom.gridy = 4;
 		contentPane.add(lblNom, gbc_lblNom);
-		
+
 		JLabel lblAdresse = new JLabel(adresse);
 		lblAdresse.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
 		GridBagConstraints gbc_lblAdresse = new GridBagConstraints();
@@ -146,7 +136,7 @@ public class Resume extends JFrame {
 		gbc_lblAdresse.gridx = 1;
 		gbc_lblAdresse.gridy = 8;
 		contentPane.add(lblAdresse, gbc_lblAdresse);
-		
+
 		JLabel lblNumroDeTva = new JLabel(numTVA);
 		lblNumroDeTva.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
 		GridBagConstraints gbc_lblNumroDeTva = new GridBagConstraints();
@@ -155,7 +145,7 @@ public class Resume extends JFrame {
 		gbc_lblNumroDeTva.gridx = 1;
 		gbc_lblNumroDeTva.gridy = 9;
 		contentPane.add(lblNumroDeTva, gbc_lblNumroDeTva);
-		
+
 		JLabel lblMail = new JLabel(mail);
 		lblMail.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
 		GridBagConstraints gbc_lblMail = new GridBagConstraints();
@@ -164,7 +154,7 @@ public class Resume extends JFrame {
 		gbc_lblMail.gridx = 1;
 		gbc_lblMail.gridy = 10;
 		contentPane.add(lblMail, gbc_lblMail);
-		
+
 		JLabel lblTlphone = new JLabel(numTel);
 		lblTlphone.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
 		GridBagConstraints gbc_lblTlphone = new GridBagConstraints();
@@ -173,10 +163,7 @@ public class Resume extends JFrame {
 		gbc_lblTlphone.gridx = 1;
 		gbc_lblTlphone.gridy = 11;
 		contentPane.add(lblTlphone, gbc_lblTlphone);
-		
-		
-		
-		
+
 		List list_1 = new List();
 		GridBagConstraints gbc_list_1 = new GridBagConstraints();
 		gbc_list_1.insets = new Insets(0, 0, 5, 5);
@@ -184,8 +171,7 @@ public class Resume extends JFrame {
 		gbc_list_1.gridx = 1;
 		gbc_list_1.gridy = 12;
 		contentPane.add(list_1, gbc_list_1);
-		
-		
+
 		List list = new List();
 		GridBagConstraints gbc_list = new GridBagConstraints();
 		gbc_list.insets = new Insets(0, 0, 5, 5);
@@ -193,14 +179,13 @@ public class Resume extends JFrame {
 		gbc_list.gridx = 2;
 		gbc_list.gridy = 12;
 		contentPane.add(list, gbc_list);
-		
 
-		for(int i = 0; i<document.getDescriptionList().size();i++) {
-			list_1.add(Integer.toString(document.getDescriptionList().get(i).getQuantite()) +" "+document.getDescriptionList().get(i).getDescription());
-			list.add(String.valueOf(document.getDescriptionList().get(i).getPrix())+" €");
+		for (int i = 0; i < document.getDescriptionList().size(); i++) {
+			list_1.add(Integer.toString(document.getDescriptionList().get(i).getQuantite()) + " "
+					+ document.getDescriptionList().get(i).getDescription());
+			list.add(String.valueOf(document.getDescriptionList().get(i).getPrix()) + " €");
 		}
-		
-		
+
 		JLabel lblTva = new JLabel("% TVA:");
 		GridBagConstraints gbc_lblTva = new GridBagConstraints();
 		gbc_lblTva.anchor = GridBagConstraints.EAST;
@@ -208,7 +193,7 @@ public class Resume extends JFrame {
 		gbc_lblTva.gridx = 0;
 		gbc_lblTva.gridy = 13;
 		contentPane.add(lblTva, gbc_lblTva);
-		
+
 		textField = new JTextField("21.0");
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
@@ -217,7 +202,7 @@ public class Resume extends JFrame {
 		gbc_textField.gridy = 13;
 		contentPane.add(textField, gbc_textField);
 		textField.setColumns(10);
-		
+
 		JButton btnCalculerLeTotal = new JButton("Calculer le total");
 		GridBagConstraints gbc_btnCalculerLeTotal = new GridBagConstraints();
 		gbc_btnCalculerLeTotal.anchor = GridBagConstraints.WEST;
@@ -225,34 +210,31 @@ public class Resume extends JFrame {
 		gbc_btnCalculerLeTotal.gridx = 2;
 		gbc_btnCalculerLeTotal.gridy = 13;
 		contentPane.add(btnCalculerLeTotal, gbc_btnCalculerLeTotal);
-		
+
 		btnCalculerLeTotal.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//Resume resume = new Resume();
+				// Resume resume = new Resume();
 				try {
 					double TVA = Double.parseDouble(textField.getText());
-					textField.setText(TVA+"");
+					textField.setText(TVA + "");
 					document.setMontantTVA(TVA);
-					htva.setText(total+"€");
-					Double TVAfix = total*TVA/100;
-					totalTVAfix.setText(TVAfix+"€");
-					Double TVACFix = TVAfix+total;
-					totalTVACFix.setText(TVACFix+"€");
-					//lblTotalTvac.setText(TVA+"%");
-					verif=true;
-					
-					
-				}
-				catch(NumberFormatException err) {
+					htva.setText(total + "€");
+					Double TVAfix = total * TVA / 100;
+					totalTVAfix.setText(TVAfix + "€");
+					Double TVACFix = TVAfix + total;
+					totalTVACFix.setText(TVACFix + "€");
+					// lblTotalTvac.setText(TVA+"%");
+					verif = true;
+
+				} catch (NumberFormatException err) {
 					textField.setText("Veuillez encoder un chiffre.");
 				}
-				
-				
+
 			}
 		});
-		
+
 		JLabel lblTotal = new JLabel("Total HTVA:");
 		GridBagConstraints gbc_lblTotal = new GridBagConstraints();
 		gbc_lblTotal.anchor = GridBagConstraints.EAST;
@@ -260,7 +242,7 @@ public class Resume extends JFrame {
 		gbc_lblTotal.gridx = 1;
 		gbc_lblTotal.gridy = 14;
 		contentPane.add(lblTotal, gbc_lblTotal);
-		
+
 		htva = new JTextField();
 		htva.setEditable(false);
 		GridBagConstraints gbc_htva = new GridBagConstraints();
@@ -270,7 +252,7 @@ public class Resume extends JFrame {
 		gbc_htva.gridy = 14;
 		contentPane.add(htva, gbc_htva);
 		htva.setColumns(10);
-		
+
 		JLabel lblTotalTva = new JLabel("Total TVA:");
 		GridBagConstraints gbc_lblTotalTva = new GridBagConstraints();
 		gbc_lblTotalTva.anchor = GridBagConstraints.EAST;
@@ -278,7 +260,7 @@ public class Resume extends JFrame {
 		gbc_lblTotalTva.gridx = 1;
 		gbc_lblTotalTva.gridy = 15;
 		contentPane.add(lblTotalTva, gbc_lblTotalTva);
-		
+
 		totalTVAfix = new JTextField();
 		totalTVAfix.setEditable(false);
 		GridBagConstraints gbc_totalTVAfix = new GridBagConstraints();
@@ -288,7 +270,7 @@ public class Resume extends JFrame {
 		gbc_totalTVAfix.gridy = 15;
 		contentPane.add(totalTVAfix, gbc_totalTVAfix);
 		totalTVAfix.setColumns(10);
-		
+
 		JLabel lblTotalTvac = new JLabel("Total TVAC:");
 		GridBagConstraints gbc_lblTotalTvac = new GridBagConstraints();
 		gbc_lblTotalTvac.anchor = GridBagConstraints.EAST;
@@ -296,7 +278,7 @@ public class Resume extends JFrame {
 		gbc_lblTotalTvac.gridx = 1;
 		gbc_lblTotalTvac.gridy = 16;
 		contentPane.add(lblTotalTvac, gbc_lblTotalTvac);
-		
+
 		totalTVACFix = new JTextField();
 		totalTVACFix.setEditable(false);
 		GridBagConstraints gbc_totalTVACFix = new GridBagConstraints();
@@ -306,7 +288,7 @@ public class Resume extends JFrame {
 		gbc_totalTVACFix.gridy = 16;
 		contentPane.add(totalTVACFix, gbc_totalTVACFix);
 		totalTVACFix.setColumns(10);
-		
+
 		JButton btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setForeground(Color.RED);
 		GridBagConstraints gbc_btnAnnuler = new GridBagConstraints();
@@ -314,17 +296,17 @@ public class Resume extends JFrame {
 		gbc_btnAnnuler.gridx = 1;
 		gbc_btnAnnuler.gridy = 17;
 		contentPane.add(btnAnnuler, gbc_btnAnnuler);
-		
+
 		btnAnnuler.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				Start start = new view.Start();
-				start.setVisible(true); 
+				start.setVisible(true);
 				setVisible(false);
 			}
 		});
-		
+
 		JButton btnGnrer = new JButton("Générer");
 		btnGnrer.setForeground(Color.BLACK);
 		GridBagConstraints gbc_btnGnrer = new GridBagConstraints();
@@ -332,23 +314,23 @@ public class Resume extends JFrame {
 		gbc_btnGnrer.gridx = 2;
 		gbc_btnGnrer.gridy = 17;
 		contentPane.add(btnGnrer, gbc_btnGnrer);
-		
+
 		btnGnrer.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
-				if(verif==false) {
+
+				if (verif == false) {
 					JFrame parent = new JFrame();
 
-		            JOptionPane.showMessageDialog(parent, "Le total n'a pas été calculé.");
-				}else {
+					JOptionPane.showMessageDialog(parent, "Le total n'a pas été calculé.");
+				} else {
 
 					setVisible(false);
-					
-					GeneratePdf generatePdf = new GeneratePdf(document);	
+
+					GeneratePdf generatePdf = new GeneratePdf(document);
 				}
-				
+
 			}
 		});
 	}

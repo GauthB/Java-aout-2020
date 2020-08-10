@@ -16,26 +16,24 @@ public class Clients {
 
 	/**
 	 * 
-	 * @return  if the connection was made correctly
+	 * @return if the connection was made correctly
 	 */
 	public Connection connect() {
 
 		String BDD = "projetjava?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	                   String url = "jdbc:mysql://localhost:8889/" + BDD;
-	                   String user = "root";
-	                   String passwd = "root";
-	             
+		String url = "jdbc:mysql://localhost:8889/" + BDD;
+		String user = "root";
+		String passwd = "root";
 
 		try {
-		    Class.forName("com.mysql.cj.jdbc.Driver");
-		    Connection conn = DriverManager.getConnection(url, user, passwd);
-		    return conn;
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(url, user, passwd);
+			return conn;
 
-		}
-		catch (Exception e){
+		} catch (Exception e) {
 
-		    e.printStackTrace();
-		    return null;
+			e.printStackTrace();
+			return null;
 		}
 
 	}
@@ -50,12 +48,12 @@ public class Clients {
 
 		Statement stmt = conn.createStatement();
 		ResultSet rs;
-	    rs = stmt.executeQuery("SELECT * FROM clients");
+		rs = stmt.executeQuery("SELECT * FROM clients");
 
 		return rs;
 
 	}
-	
+
 	/**
 	 * 
 	 * @param conn
@@ -63,16 +61,16 @@ public class Clients {
 	 * @return all information on the selected client
 	 * @throws SQLException
 	 */
-	public ResultSet getClientsId(Connection conn,String ref) throws SQLException {
+	public ResultSet getClientsId(Connection conn, String ref) throws SQLException {
 
 		Statement stmt = conn.createStatement();
 		ResultSet rs;
-	    rs = stmt.executeQuery("SELECT id FROM clients WHERE id+' '+nom = '"+ref+"'");
+		rs = stmt.executeQuery("SELECT id FROM clients WHERE id+' '+nom = '" + ref + "'");
 
 		return rs;
 
 	}
-	
+
 	/**
 	 * 
 	 * @param conn
@@ -80,20 +78,19 @@ public class Clients {
 	 * @return all customer information according to id
 	 * @throws SQLException
 	 */
-	public ResultSet getClientsAllId(Connection conn,int id) throws SQLException {
+	public ResultSet getClientsAllId(Connection conn, int id) throws SQLException {
 
 		Statement stmt = conn.createStatement();
 		ResultSet rs;
-	    rs = stmt.executeQuery("SELECT * FROM clients WHERE id='"+id+"'");
+		rs = stmt.executeQuery("SELECT * FROM clients WHERE id='" + id + "'");
 
 		return rs;
 
 	}
-	
-	
 
 	/**
 	 * insert in the DB
+	 * 
 	 * @param conn
 	 * @param nom
 	 * @param adresse
@@ -102,12 +99,13 @@ public class Clients {
 	 * @param numTel
 	 * @throws SQLException
 	 */
-	public void insertClient(Connection conn, String nom, String adresse,String numTVA, String mail,String numTel ) throws SQLException {
+	public void insertClient(Connection conn, String nom, String adresse, String numTVA, String mail, String numTel)
+			throws SQLException {
 
 		Statement stmt = conn.createStatement();
 
-		stmt.executeUpdate("INSERT INTO clients (nom, adresse, tva, email, telephone) "
-		          +"VALUES ('"+nom+"', '"+adresse+"', '"+numTVA+"', '"+mail+"','"+numTel+"')");
+		stmt.executeUpdate("INSERT INTO clients (nom, adresse, tva, email, telephone) " + "VALUES ('" + nom + "', '"
+				+ adresse + "', '" + numTVA + "', '" + mail + "','" + numTel + "')");
 
 		conn.close();
 
@@ -117,25 +115,16 @@ public class Clients {
 	 * 
 	 * @param args
 	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-            public void run() {
-            	Clients client = new Clients();
-                try {
-
-                	//SELECT
-                	ResultSet result = client.getClients(client.connect());
-                	while ( result.next() ) {
-                        String firstName = result.getString("nom");
-                        System.out.println(firstName);
-                    }
-
-
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-            }
-        });
-	}*/
+	/*
+	 * public static void main(String[] args) { EventQueue.invokeLater(new
+	 * Runnable() { public void run() { Clients client = new Clients(); try {
+	 * 
+	 * //SELECT ResultSet result = client.getClients(client.connect()); while (
+	 * result.next() ) { String firstName = result.getString("nom");
+	 * System.out.println(firstName); }
+	 * 
+	 * 
+	 * } catch (SQLException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); } } }); }
+	 */
 }
