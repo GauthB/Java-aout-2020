@@ -16,7 +16,14 @@ public class Personne {
 	private String adresse;
 	private String tel;
 	
-	
+	/**
+	 * 
+	 * @param nom
+	 * @param TVA
+	 * @param email
+	 * @param adresse
+	 * @param tel
+	 */
 	public Personne(String nom,String TVA,String email,String adresse,String tel){
 		this.nom = nom;
 		this.TVA = TVA;

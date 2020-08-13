@@ -19,10 +19,16 @@ public class ClientInfo extends Personne {
 	private int id;
 
 	/**
+	 * 
 	 * @param id
+	 * @param nom
+	 * @param TVA
+	 * @param email
+	 * @param adresse
+	 * @param tel
 	 * @throws SQLException
 	 */
-	public ClientInfo(int id,String nom,String TVA,String email,String adresse,String tel) throws SQLException {
+	public ClientInfo(int id,String nom,String TVA,String email,String adresse,String tel)  {
 
 		super( nom,TVA,email,adresse,tel);
 		

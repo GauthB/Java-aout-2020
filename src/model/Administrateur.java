@@ -18,10 +18,18 @@ public class Administrateur extends Personne {
 	private String NumCompte;
 
 	/**
+	 * 
+	 * @param NumCompte
+	 * @param webSite
 	 * @param id
+	 * @param nom
+	 * @param TVA
+	 * @param email
+	 * @param adresse
+	 * @param tel
 	 * @throws SQLException
 	 */
-	public Administrateur(String NumCompte,String webSite,int id,String nom,String TVA,String email,String adresse,String tel) throws SQLException {
+	public Administrateur(String NumCompte,String webSite,int id,String nom,String TVA,String email,String adresse,String tel){
 
 		super( nom,TVA,email,adresse,tel);
 		
