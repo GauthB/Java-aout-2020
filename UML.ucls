@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="model.Personne" project="Aout2020" file="/Aout2020/src/model/Personne.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="916" y="1022"/>    
+    <position height="-1" width="-1" x="536" y="935"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="controller.Utils" project="Aout2020" file="/Aout2020/src/controller/Utils.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="956" y="154"/>    
+    <position height="-1" width="-1" x="771" y="42"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="tests.testDb" project="Aout2020" file="/Aout2020/src/tests/testDb.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="198" y="927"/>    
+    <position height="-1" width="-1" x="59" y="792"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +84,7 @@
   </class>  
   <class id="10" language="java" name="controller.Clients" project="Aout2020" 
     file="/Aout2020/src/controller/Clients.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="393" y="749"/>    
+    <position height="-1" width="-1" x="359" y="653"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -93,7 +93,7 @@
   </class>  
   <class id="11" language="java" name="model.Description" project="Aout2020" file="/Aout2020/src/model/Description.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1114" y="631"/>    
+    <position height="-1" width="-1" x="1178" y="602"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -102,7 +102,7 @@
   </class>  
   <class id="12" language="java" name="model.Administrateur" project="Aout2020" 
     file="/Aout2020/src/model/Administrateur.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="550" y="1042"/>    
+    <position height="-1" width="-1" x="184" y="1032"/>    
     <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -120,7 +120,7 @@
   </class>  
   <class id="14" language="java" name="model.ClientInfo" project="Aout2020" file="/Aout2020/src/model/ClientInfo.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1228" y="1014"/>    
+    <position height="-1" width="-1" x="830" y="999"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -138,7 +138,7 @@
   </class>  
   <class id="16" language="java" name="model.Document" project="Aout2020" file="/Aout2020/src/model/Document.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1324" y="277"/>    
+    <position height="-1" width="-1" x="1006" y="277"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -147,7 +147,7 @@
   </class>  
   <interface id="17" language="java" name="model.IntUtils" project="Aout2020" file="/Aout2020/src/model/IntUtils.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="723" y="88"/>    
+    <position height="-1" width="-1" x="563" y="-40"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
