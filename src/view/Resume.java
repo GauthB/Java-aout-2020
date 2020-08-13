@@ -6,7 +6,6 @@ import controller.Utils;
 import controller.Clients;
 import view.Start;
 import java.awt.EventQueue;
-import controller.IntUtils;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -27,6 +26,7 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.Color;
 import model.Document;
+import model.IntUtils;
 
 import javax.swing.JTextField;
 import javax.swing.JList;
@@ -87,6 +87,9 @@ public class Resume extends JFrame {
 		gbc_lblDate.gridx = 1;
 		gbc_lblDate.gridy = 1;
 		contentPane.add(lblDate, gbc_lblDate);
+		
+		
+		
 		Clients clients = new Clients();
 
 		String firstName = "";
@@ -95,22 +98,17 @@ public class Resume extends JFrame {
 		String mail = "";
 		String numTel = "";
 
-		try {
-			ResultSet clientId = clients.getClientsAllId(clients.connect(), id);
-			while (clientId.next()) {
-				firstName = clientId.getString("nom");
-				adresse = clientId.getString("adresse");
-				numTVA = clientId.getString("tva");
-				mail = clientId.getString("email");
-				numTel = clientId.getString("telephone");
-			}
+		
+		firstName = document.getClientInfo().getNom();
+		adresse = document.getClientInfo().getAdresse();
+		mail = document.getClientInfo().getTel();
+		numTVA = document.getClientInfo().getTVA();
+		numTel = document.getClientInfo().getEmail();
+		
 
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			System.out.println("erreur dans le getClients");
-			e1.printStackTrace();
-		}
-
+		
+		
+		
 		JLabel lblClient = new JLabel("Client:");
 		lblClient.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 		GridBagConstraints gbc_lblClient = new GridBagConstraints();

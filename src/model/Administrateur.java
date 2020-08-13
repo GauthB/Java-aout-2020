@@ -3,35 +3,72 @@
  */
 package model;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import controller.Clients;
 
 /**
  * @author gauthierbohyn
  *
- *         this class is used to collect all the information for the client to
- *         whom we will send the document
  */
-public class ClientInfo extends Personne {
+public class Administrateur extends Personne {
 
+	
+	
 	private int id;
+	private String webSite;
+	private String NumCompte;
 
 	/**
 	 * @param id
 	 * @throws SQLException
 	 */
-	public ClientInfo(int id,String nom,String TVA,String email,String adresse,String tel) throws SQLException {
+	public Administrateur(String NumCompte,String webSite,int id,String nom,String TVA,String email,String adresse,String tel) throws SQLException {
 
 		super( nom,TVA,email,adresse,tel);
 		
 		this.id = id;
+		this.webSite=webSite;
+		this.NumCompte=NumCompte;
 
 	}
 
 	
 	
+	/**
+	 * @return the webSite
+	 */
+	public String getWebSite() {
+		return webSite;
+	}
+
+
+
+	/**
+	 * @param webSite the webSite to set
+	 */
+	public void setWebSite(String webSite) {
+		this.webSite = webSite;
+	}
+
+
+
+	/**
+	 * @return the numCompte
+	 */
+	public String getNumCompte() {
+		return NumCompte;
+	}
+
+
+
+	/**
+	 * @param numCompte the numCompte to set
+	 */
+	public void setNumCompte(String numCompte) {
+		NumCompte = numCompte;
+	}
+
+
+
 	/**
 	 * @return the id
 	 */
@@ -101,7 +138,6 @@ public class ClientInfo extends Personne {
 		return super.getTel();
 	}
 
-	
 	
 	
 	

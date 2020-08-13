@@ -6,6 +6,8 @@ package controller;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
+import model.IntUtils;
+
 /**
  * @author gauthierbohyn
  *

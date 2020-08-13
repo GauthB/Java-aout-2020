@@ -1,7 +1,7 @@
 /**
  * 
  */
-package controller;
+package model;
 
 import java.time.LocalDate;
 

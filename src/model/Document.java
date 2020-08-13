@@ -5,10 +5,12 @@ package model;
 
 import model.Description;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import controller.Clients;
 import model.ClientInfo;
 
 /**
@@ -54,7 +56,26 @@ public class Document {
 	 */
 	public void setInfoClient(int id) throws SQLException {
 
-		this.clientInfo = new ClientInfo(id);
+		
+		Clients clients = new Clients();
+
+		clients.getClientsAllId(clients.connect(), id);
+
+		try {
+			ResultSet clientId = clients.getClientsAllId(clients.connect(), id);
+			while (clientId.next()) {
+				
+				 this.clientInfo = new ClientInfo(id,clientId.getString("nom"),clientId.getString("adresse"),clientId.getString("tva"),clientId.getString("email"),clientId.getString("telephone"));
+			}
+
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			System.out.println("erreur dans le getClients");
+			e1.printStackTrace();
+		}
+		
+		
+		
 		System.out.println(this.clientInfo.getNom());
 	}
 
