@@ -111,20 +111,5 @@ public class Clients {
 
 	}
 
-	/**
-	 * 
-	 * @param args
-	 */
-	/*
-	 * public static void main(String[] args) { EventQueue.invokeLater(new
-	 * Runnable() { public void run() { Clients client = new Clients(); try {
-	 * 
-	 * //SELECT ResultSet result = client.getClients(client.connect()); while (
-	 * result.next() ) { String firstName = result.getString("nom");
-	 * System.out.println(firstName); }
-	 * 
-	 * 
-	 * } catch (SQLException e) { // TODO Auto-generated catch block
-	 * e.printStackTrace(); } } }); }
-	 */
+
 }
