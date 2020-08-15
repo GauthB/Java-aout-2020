@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.Clients;
 import model.ClientInfo;
 
 /**
@@ -57,12 +56,12 @@ public class Document {
 	public void setInfoClient(int id) throws SQLException {
 
 		
-		Clients clients = new Clients();
+		DbConnect dbConnect = new DbConnect();
 
-		clients.getClientsAllId(clients.connect(), id);
+		dbConnect.getClientsAllId(dbConnect.connect(), id);
 
 		try {
-			ResultSet clientId = clients.getClientsAllId(clients.connect(), id);
+			ResultSet clientId = dbConnect.getClientsAllId(dbConnect.connect(), id);
 			while (clientId.next()) {
 				
 				 this.clientInfo = new ClientInfo(id,clientId.getString("nom"),clientId.getString("adresse"),clientId.getString("tva"),clientId.getString("email"),clientId.getString("telephone"));

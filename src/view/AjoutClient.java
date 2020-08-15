@@ -1,23 +1,18 @@
 package view;
 
+import model.DbConnect;
 import model.Document;
-import java.awt.BorderLayout;
-import controller.Clients;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import view.ClientsView;
@@ -156,9 +151,9 @@ public class AjoutClient extends JFrame {
 				// TODO Auto-generated method stub
 
 				if (!inputNom.getText().equals("")) {
-					Clients clients = new controller.Clients();
+					DbConnect dbConnect = new model.DbConnect();
 					try {
-						clients.insertClient(clients.connect(), inputNom.getText(), inputAdresse.getText(),
+						dbConnect.insertClient(dbConnect.connect(), inputNom.getText(), inputAdresse.getText(),
 								inputTva.getText(), inputMail.getText(), inputTel.getText());
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block

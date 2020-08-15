@@ -3,17 +3,13 @@
  */
 package tests;
 
-import controller.Clients;
-/**
- * @author gauthierbohyn
- *
- */
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.SQLException;
 
 import org.junit.jupiter.api.Test;
+
+import model.DbConnect;
 
 /**
  * @author gauthierbohyn
@@ -26,8 +22,8 @@ public class testDb {
 	 */
 	@Test
 	void testConnection() {
-		Clients clients = new Clients();
-		if (clients.connect() != null) {
+		DbConnect dbConnect = new DbConnect();
+		if (dbConnect.connect() != null) {
 			System.out.print("La connection a été éffectuée \n");
 		} else {
 			System.out.print("Erreur de connection avec la db \n");
@@ -42,8 +38,8 @@ public class testDb {
 	 */
 	@Test
 	void testRequete() throws SQLException {
-		Clients clients = new Clients();
-		if (clients.getClients(clients.connect()) != null) {
+		DbConnect dbConnect = new DbConnect();
+		if (dbConnect.getClients(dbConnect.connect()) != null) {
 			System.out.print("La base de données n'est pas vide \n");
 		} else {
 			System.out.print("La base de données est vide \n");

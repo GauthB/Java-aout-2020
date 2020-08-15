@@ -1,18 +1,15 @@
 package view;
 
 import java.awt.BorderLayout;
-import model.Document;
-import controller.Clients;
-import controller.Utils;
 
-import java.awt.EventQueue;
+import model.DbConnect;
+import model.Document;
 import view.Creation;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,14 +38,14 @@ public class ClientsView extends JFrame {
 
 		JLabel lblVeuillezSelectionnerCe = new JLabel("Veuillez selectionner votre client:");
 		contentPane.add(lblVeuillezSelectionnerCe, BorderLayout.NORTH);
-		Clients clients = new Clients();
+		DbConnect dbConnect = new DbConnect();
 		List list = new List();
 
 		/**
 		 * fill in the client list
 		 */
 		try {
-			ResultSet clientTb = clients.getClients(clients.connect());
+			ResultSet clientTb = dbConnect.getClients(dbConnect.connect());
 			while (clientTb.next()) {
 				String firstName = clientTb.getString("id") + " " + clientTb.getString("nom");
 				list.add(firstName);
@@ -69,7 +66,7 @@ public class ClientsView extends JFrame {
 				// TODO Auto-generated method stub
 
 				try {
-					ResultSet clientId = clients.getClientsId(clients.connect(), e.getActionCommand());
+					ResultSet clientId = dbConnect.getClientsId(dbConnect.connect(), e.getActionCommand());
 					while (clientId.next()) {
 						int id = Integer.parseInt(clientId.getString("id"));
 						document.setInfoClient(id);

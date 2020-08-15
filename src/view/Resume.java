@@ -1,11 +1,9 @@
 package view;
 
-import java.awt.BorderLayout;
 import controller.GeneratePdf;
 import controller.Utils;
-import controller.Clients;
 import view.Start;
-import java.awt.EventQueue;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,20 +14,14 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.awt.List;
 import java.awt.Font;
-import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.Color;
 import model.Document;
-import model.IntUtils;
 
 import javax.swing.JTextField;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 public class Resume extends JFrame {
@@ -88,9 +80,6 @@ public class Resume extends JFrame {
 		gbc_lblDate.gridy = 1;
 		contentPane.add(lblDate, gbc_lblDate);
 		
-		
-		
-		Clients clients = new Clients();
 
 		String firstName = "";
 		String adresse = "";

@@ -1,16 +1,17 @@
 package view;
 
 import java.awt.BorderLayout;
+
+import model.DbConnect;
 import model.Document;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDate;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import controller.Clients;
-import controller.Utils;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -78,7 +79,7 @@ public class Start extends JFrame {
 		gbc_btnDevis.gridx = 0;
 		gbc_btnDevis.gridy = 1;
 		contentPane.add(btnDevis, gbc_btnDevis);
-		Clients clients = new Clients();
+		DbConnect dbConnect = new DbConnect();
 		/**
 		 * if you choose "quote" document.status = "Devis"
 		 */
@@ -87,7 +88,7 @@ public class Start extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 
-				if (clients.connect() != null) {
+				if (dbConnect.connect() != null) {
 					System.out.print("Vérification de la connection à la db: OK\n");
 				} else {
 					System.out.print("Erreur de connection avec la db \n");
@@ -141,7 +142,7 @@ public class Start extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 
-				if (clients.connect() != null) {
+				if (dbConnect.connect() != null) {
 					System.out.print("Vérification de la connection à la db: OK \n");
 				} else {
 					System.out.print("Erreur de connection avec la db \n");

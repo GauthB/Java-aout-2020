@@ -14,7 +14,7 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-import controller.Clients;
+import model.DbConnect;
 
 /**
  * @author gauthierbohyn this class allows to generate a pdf with all the
@@ -27,7 +27,7 @@ public class ListingClients {
 	 */
 	public ListingClients() {
 
-		Clients clients = new Clients();
+		DbConnect dbConnect = new DbConnect();
 
 		try {
 			String filename = "Listing_clients.xls";
@@ -35,7 +35,7 @@ public class ListingClients {
 			HSSFSheet sheet = workbook.createSheet("Listing clients");
 
 			try {
-				ResultSet clientTb = clients.getClients(clients.connect());
+				ResultSet clientTb = dbConnect.getClients(dbConnect.connect());
 
 				HSSFRow row = sheet.createRow((short) 0);
 				row.createCell(0).setCellValue("Nom");
