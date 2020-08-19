@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 
 import model.DbConnect;
 import model.Document;
+import model.DocumentPays;
+
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -96,13 +98,12 @@ public class Start extends JFrame {
 
 					JOptionPane.showMessageDialog(parent, "ERREUR: Vous n'êtes pas connecté à la base de données.");
 				}
-				Document document = new Document("Devis");
+				DocumentPays document = new DocumentPays("Devis");
 
 				ClientsView clientsView = new view.ClientsView(document);
 
 				clientsView.setVisible(true);
 				setVisible(false);
-
 			}
 		});
 
@@ -150,7 +151,7 @@ public class Start extends JFrame {
 
 					JOptionPane.showMessageDialog(parent, "ERREUR: Vous n'êtes pas connecté à la base de données.");
 				}
-				Document document = new Document("Facture");
+				DocumentPays document = new DocumentPays("Facture");
 
 				ClientsView clientsView = new view.ClientsView(document);
 				clientsView.setVisible(true);

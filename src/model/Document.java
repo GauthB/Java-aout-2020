@@ -19,11 +19,14 @@ import model.ClientInfo;
 
 public class Document {
 
+	
 	private String status;
 	private ClientInfo clientInfo;
 	private List<Description> descriptionList = new ArrayList<Description>();
 	private Double montantTVA;
+	
 
+	
 	/**
 	 * @return the montantTVA
 	 */
@@ -42,11 +45,16 @@ public class Document {
 	 * 
 	 * @param status
 	 */
-	public Document(String status) {
+	public Document(String status ) {
+		
 		// System.out.println("----");
 		System.out.println(status);
 		// System.out.println("----");
 		this.status = status;
+		
+		
+		
+		
 	}
 
 	/**
@@ -73,11 +81,11 @@ public class Document {
 			e1.printStackTrace();
 		}
 		
-		
-		
 		System.out.println(this.clientInfo.getNom());
 	}
 
+	
+	
 	/**
 	 * 
 	 * @param quantite
@@ -90,7 +98,10 @@ public class Document {
 		System.out.println(description.getQuantite());
 		this.descriptionList.add(description);
 	}
-
+	/**
+	 * 
+	 * @param nbr
+	 */
 	public void delDescription(int nbr) {
 		this.descriptionList.remove(nbr);
 	}
@@ -136,5 +147,6 @@ public class Document {
 	public void setDescriptionList(List<Description> descriptionList) {
 		this.descriptionList = descriptionList;
 	}
+
 
 }

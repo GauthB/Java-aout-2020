@@ -1,8 +1,11 @@
 /**
+
  * 
  */
 package controller;
-
+import model.ClientInfo;
+import model.Description;
+import model.DocumentPays;
 /**
  * @author gauthierbohyn
  *
@@ -18,5 +21,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		Start view = new view.Start();
 		view.main(args);
+		
+		
 	}
 }

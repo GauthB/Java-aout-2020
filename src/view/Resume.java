@@ -1,6 +1,7 @@
 package view;
 
 import controller.GeneratePdf;
+import model.DocumentPays;
 import controller.Utils;
 import view.Start;
 
@@ -15,6 +16,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.util.Map;
 import java.awt.List;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -39,6 +41,10 @@ public class Resume extends JFrame {
 	 */
 	public Resume(Document document) {
 
+		//document.toString();
+		//System.out.println(document.toString());
+		
+		
 		for (int i = 0; i < document.getDescriptionList().size(); i++) {
 			Double quant = (double) document.getDescriptionList().get(i).getQuantite();
 			Double finalT = quant * document.getDescriptionList().get(i).getPrix();
@@ -105,6 +111,13 @@ public class Resume extends JFrame {
 		gbc_lblClient.gridx = 0;
 		gbc_lblClient.gridy = 3;
 		contentPane.add(lblClient, gbc_lblClient);
+		
+		JLabel lblNewLabel = new JLabel(document.toString());
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel.gridx = 2;
+		gbc_lblNewLabel.gridy = 3;
+		contentPane.add(lblNewLabel, gbc_lblNewLabel);
 
 		JLabel lblNom = new JLabel(firstName);
 		lblNom.setFont(new Font("Lucida Grande", Font.ITALIC, 13));
